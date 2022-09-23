@@ -2,27 +2,27 @@ package competition;
 import java.util.*;
 
 import competitor.Competitor;
+import match.*;
 
 
 public abstract class Competition {
 	
-	/**
-	 * a list who contains all competitors
-	 */
-	
-	protected final List<Competitor> competitors;
+	// Attribute
 
+	protected Match m1;
+	protected final List<Competitor> competitors;
+ 
 	/**
 	 * initialize the constructor
 	 */
 	
 	public Competition(List<Competitor> competitors) {
-		
+		this.m1 = new RandomVictoryMatch();
 		this.competitors = competitors;
 	}
 	
-	//methods
-	
+	//methods 
+	 
 	public void play() {};
 	
 	/**
@@ -30,13 +30,17 @@ public abstract class Competition {
 	 * @param c1 the first competitor
 	 * @param c2 the second competitor
 	 */
-	public abstract void playMatch(Competitor c1, Competitor c2);
+	protected void playMatch(Competitor c1, Competitor c2) {
+		this.m1.winnerOfTheGame(c1, c2);
+	}
 	
 	/**
 	 * organize match between competitors
 	 * @param competitor
 	 */
-	public abstract void play(List<Competitor>competitor);
+	protected void play(List<Competitor>competitor) {
+		
+	}
 	
 	/**
 	 * @return ranking of each competitors
