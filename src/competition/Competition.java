@@ -11,7 +11,7 @@ public abstract class Competition {
 
 	protected Match m1;
 	protected final List<Competitor> competitors;
- 
+	
 	/**
 	 * initialize the constructor
 	 */

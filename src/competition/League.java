@@ -16,7 +16,6 @@ public class League extends Competition {
 	 */
 	public League(List<Competitor> competitors) {
 		super(competitors); 
-		this.match = new RandomVictoryMatch();
 	}
 	
 
