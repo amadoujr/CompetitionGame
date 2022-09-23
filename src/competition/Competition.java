@@ -31,16 +31,14 @@ public abstract class Competition {
 	 * @param c2 the second competitor
 	 */
 	protected void playMatch(Competitor c1, Competitor c2) {
-		this.m1.winnerOfTheGame(c1, c2);
+		Competitor c = this.m1.winnerOfTheGame(c1,c2);
 	}
 	
 	/**
 	 * organize match between competitors
 	 * @param competitor
 	 */
-	protected void play(List<Competitor>competitor) {
-		
-	}
+	protected abstract void play(List<Competitor> competitors);
 	
 	/**
 	 * @return ranking of each competitors
