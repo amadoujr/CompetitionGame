@@ -31,22 +31,24 @@ public abstract class Competition {
 	 * @param c2 the second competitor
 	 */
 	protected void playMatch(Competitor c1, Competitor c2) {
-		this.m1.winnerOfTheGame(c1, c2);
+		
 	}
 	
-	/**
+	/** 
 	 * organize match between competitors
 	 * @param competitor
 	 */
-	protected void play(List<Competitor>competitor) {
-		
-	}
+	protected abstract void play(List<Competitor>competitor);
 	
 	/**
 	 * @return ranking of each competitors
 	 */
-	public Map<Competitor,Integer> ranking (){
-		return null;
+	public Map<Competitor,Integer> ranking(){
+		Map<Competitor,Integer> ranks = new HashMap<>();
+		for (Competitor c : competitors) {
+			ranks.put(c, c.getScore());
+		}
+		return ranks;
 		
 	}
 	

@@ -6,11 +6,9 @@ import competitor.Competitor;
 public abstract class Match {
 	
 	
-	public Match() {
-		
-	}
+	public Match() {}
 	
-	public abstract void winnerOfTheGame(Competitor c1 , Competitor c2);
+	public abstract Competitor winnerOfTheGame(Competitor c1 , Competitor c2);
 	
 }
 
