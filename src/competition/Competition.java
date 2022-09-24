@@ -11,7 +11,7 @@ public abstract class Competition {
 
 	protected Match m1;
 	protected final List<Competitor> competitors;
- 
+	
 	/**
 	 * initialize the constructor
 	 */
@@ -31,14 +31,15 @@ public abstract class Competition {
 	 * @param c2 the second competitor
 	 */
 	protected void playMatch(Competitor c1, Competitor c2) {
-		
+
 	}
 	
 	/** 
 	 * organize match between competitors
 	 * @param competitor
 	 */
-	protected abstract void play(List<Competitor>competitor);
+
+	protected abstract void play(List<Competitor> competitors);
 	
 	/**
 	 * @return ranking of each competitors
