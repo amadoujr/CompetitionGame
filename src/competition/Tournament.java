@@ -9,9 +9,10 @@ public class Tournament extends Competition {
 	private Competitor winner ;
 	private Match match;
 	
-	public Tournament(List<Competitor> competitors, Match m1) {
+	public Tournament(List<Competitor> competitors, Match m1,List<Competitor> qualify) {
 		super(competitors);
 		this.match = m1;
+		this.qualify = new ArrayList<Competitor>(this.competitors);
 	}
 
 	/**
@@ -43,7 +44,7 @@ public class Tournament extends Competition {
 	 * @param List<Competitor> compet
 	 */
 	public void play(List<Competitor> compet) {
-		this.qualify.addAll(compet) ;
+		this.qualify = new ArrayList<Competitor>(compet);
 		while (this.qualify.size() > 1) {
 			int l = this.qualify.size() ;
 			Collections.shuffle(this.qualify);
