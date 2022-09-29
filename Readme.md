@@ -9,7 +9,7 @@
 
 # Livrables
 
-## Livrable 1
+## Semaine 1
 
 Durant cette semaine, on s'était fixé comme objectifs de : réaliser les deux
 classes suivantes : *League* && *Tournament* et les *Tests Unitaires* de chaque classe.
