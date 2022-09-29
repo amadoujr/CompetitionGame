@@ -1,6 +1,7 @@
 package competition;
 
 import java.util.*;
+
 import competitor.Competitor;
 import match.*;
 
@@ -9,6 +10,11 @@ public class Tournament extends Competition {
 	private Competitor winner ;
 	private Match match;
 	
+	/**
+	 * initialize the tournament
+	 * @param List<Competitor> competitors the list of competitors of the tournament
+	 * @param Match m1 the type of match who will get played during the tournament 
+	 */
 	public Tournament(List<Competitor> competitors, Match m1) {
 		super(competitors);
 		this.match = m1;	
@@ -22,10 +28,18 @@ public class Tournament extends Competition {
 		return this.qualify;
 	}
 	
+	/**
+	 * add a list of competitors at the list of qualify
+	 * @param List<Competitor> c
+	 */
 	public void setQualify(List<Competitor> c) {
 		this.qualify.addAll(c);
 	}
 	
+	/**
+	 * return the list of competitors
+	 * @return List<Competitor> competitors
+	 */
 	public List<Competitor> getCompetitors() {
 		return this.competitors;
 	}
@@ -56,22 +70,26 @@ public class Tournament extends Competition {
 			for (int i=0 ; i<l ; i+=2) {
 				apresMatch(this.qualify.get(i),this.qualify.get(i+1));	
 			}
+			List <Competitor > deleteCompetitors = new ArrayList<>() ;
 			for (Competitor c : this.qualify) {
-				if (c.getScore()==-1) {
-					this.qualify.remove(c);
-				}
-			}
+			    if (c.getScore() == -1) {
+			    	deleteCompetitors.add(c);
+			    }
+			 }
+			for (Competitor c : deleteCompetitors) {
+			    this.qualify.remove(c);
+			 }
 		}
 		this.winner = this.qualify.get(0) ;
 	}
 	
 	
 	/**
-	 * return the name of the winner of the tournament 
-	 * @return String name of the winner 
+	 * return the winner of the tournament 
+	 * @return name of the winner 
 	 */
-	public String winnerTournament() {
-		return this.winner.getName() ;
+	public Competitor winnerTournament() {
+		return this.winner ;
 	}
 
 	
