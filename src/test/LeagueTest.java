@@ -47,8 +47,7 @@ class LeagueTest {
 		int nb_points  = 0;
 		assertEquals(c1.getScore(), nb_points);
 		this.league.play(competitors);
-		assertTrue(c1.getScore()!= 0);
-		assertEquals(c1.getScore() , 3);
+		assertEquals(c1.getScore() , 3);  // all competitors have the same points due to the use of a MockClass
 		
 	}
 }
