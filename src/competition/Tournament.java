@@ -17,6 +17,10 @@ public class Tournament extends Competition {
 	 */
 	public Tournament(List<Competitor> competitors, Match m1) {
 		super(competitors);
+		if( competitors.size() % 2 != 0) {
+			System.out.println("le nombre de compétiteurs doit être une puissance de 2");
+			System.exit(0);
+		}
 		this.match = m1;	
 	}
 

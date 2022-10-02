@@ -2,6 +2,7 @@ package competition;
 import java.util.*;
 
 import competitor.Competitor;
+import display.Display;
 import match.*;
 
 
@@ -11,6 +12,8 @@ public abstract class Competition {
 
 	protected Match m1;
 	protected final List<Competitor> competitors;
+	protected boolean finished ;
+	public static final Display displayer = new Display();
 	
 	/**
 	 * initialize the constructor
@@ -21,17 +24,34 @@ public abstract class Competition {
 		this.competitors = competitors;
 	}
 	
-	//methods 
+	/**
+	 * this methods runs a competition till the end
+	 */
 	 
-	public void play() {};
+	public void play() {
+		while(!this.isFinished()) {   // end of the game reached ?
+			this.play(competitors);   // start the competition
+			this.finished = true;    
+		}
+		System.out.println();
+		this.ranking(); // display the ranking of the tournament
+	}
 	
+	/**
+	 * @return true if the game is finished otherwise false
+	 */
+	private boolean isFinished() {
+		// TODO Auto-generated method stub
+		return this.finished;
+	}
+
 	/**
 	 * make each competitor play against each other
 	 * @param c1 the first competitor
 	 * @param c2 the second competitor
 	 */
 	protected void playMatch(Competitor c1, Competitor c2) {
-
+		// pas encore utilisée ...
 	}
 	
 	/** 
@@ -45,11 +65,20 @@ public abstract class Competition {
 	 * @return ranking of each competitors
 	 */
 	public Map<Competitor,Integer> ranking(){
+		System.out.println("*** Ranking ***");
+		
 		Map<Competitor,Integer> ranks = new HashMap<>();
 		for (Competitor c : competitors) {
 			ranks.put(c, c.getScore());
+		} 
+		System.out.println();
+		for( Map.Entry <Competitor, Integer> entry : ranks.entrySet()) {
+			Competition.displayer.displaymsg(entry.getKey() + " - "+ entry.getValue());
 		}
 		return ranks;
+		
+		
+		
 		
 	}
 	
