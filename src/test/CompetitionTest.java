@@ -27,10 +27,10 @@ public abstract class CompetitionTest {
 
 	@Test
 	public void Playtest() {
-		Competition tour = new Tournament (this.competitors, this.m1);
+		/*Competition tour = new Tournament (this.competitors, this.m1);*/
 		CompetitionMock mock = new CompetitionMock(this.competitors);
 		assertTrue(mock.getOccurence()== 0);
-		tour.play();
+		mock.play();
 		assertTrue(mock.getOccurence()== 1);
 		
 	}
