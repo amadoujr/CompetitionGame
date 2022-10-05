@@ -7,6 +7,7 @@ import match.*;
 
 public class Tournament extends Competition {
 	private List<Competitor> qualify = new ArrayList<>();
+	private List<Competitor> finalRank = new ArrayList<>();
 	private Competitor winner ;
 	private Match match;
 	
@@ -55,12 +56,32 @@ public class Tournament extends Competition {
 	 */
 	public void apresMatch(Competitor c1,Competitor c2) {
 		if (this.match.winnerOfTheGame(c1, c2).equals(c1)) {
-			c2.setScore(-1) ;
+			c2.setQualification(false) ;
+			c1.setScoreTournament(c1.getScoreTournament() + 1);
 		}
 		else {
-			c1.setScore(-1) ;
+			c1.setQualification(false) ;
+			c2.setScoreTournament(c2.getScoreTournament() + 1) ;
 		}
 	}
+	
+	public void doingRank(List<Competitor> c) {
+		for (int i = 0; i < c.size(); i++){
+             int index = i;  
+             for (int j = i + 1; j < c.size(); j++)
+             {
+                  if (tab[j] < tab[index]){ 
+                       index = j;
+                  }
+             }
+
+             int min = tab[index];
+             tab[index] = tab[i]; 
+             tab[i] = min;
+        }
+   }
+	
+	
 	
 	/**
 	 * do the tournament and update the qualify list 
@@ -76,13 +97,16 @@ public class Tournament extends Competition {
 			}
 			List <Competitor > deleteCompetitors = new ArrayList<>() ;
 			for (Competitor c : this.qualify) {
-			    if (c.getScore() == -1) {
+			    if (c.getQualification() == false) {
 			    	deleteCompetitors.add(c);
 			    }
 			 }
 			for (Competitor c : deleteCompetitors) {
 			    this.qualify.remove(c);
 			 }
+		}
+		for (int i=0 ; i<this.competitors.size() ; i+=1) {
+			
 		}
 		this.winner = this.qualify.get(0) ;
 	}

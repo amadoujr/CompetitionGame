@@ -5,6 +5,8 @@ public class Competitor {
 	// attribute
 	private String name;
 	private int score;
+	private int scoreTournament;
+	private boolean qualification;
 	
 	/**
 	 * initialize the constructor
@@ -13,6 +15,7 @@ public class Competitor {
 	 */
 	public Competitor(String name){
 		this.name = name;
+		this.qualification = true ;
 	}
 	
 	
@@ -26,13 +29,28 @@ public class Competitor {
 	}
 	
 	public int getScore() {
-		return score;
+		return this.score;
 	}
 	
 	public void setScore(int score) {
 		this.score = score;
 	}
-
+	
+	public int getScoreTournament() {
+		return this.scoreTournament;
+	}
+	
+	public void setScoreTournament(int score) {
+		this.scoreTournament = score;
+	}
+	
+	public boolean getQualification() {
+		return this.qualification;
+	}
+	
+	public void setQualification(boolean b) {
+		this.qualification = b;
+	}
 
 	@Override
 	public String toString() {
