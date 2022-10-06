@@ -42,6 +42,17 @@ class CompetitorTest {
 	}
 	
 	@Test
+	public void getQualificationTestOK() {
+		assertTrue(this.competitor.getQualification() == true);
+	}
+	
+	@Test
+	public void setQualificationTestOK() {
+		this.competitor.setQualification(false);
+		assertTrue(this.competitor.getQualification() == false);
+	}
+	
+	@Test
 	public void toStringTestOK() {
 		assertTrue(this.competitor.toString().equals(this.competitor.getName()));
 	}

@@ -5,7 +5,6 @@ public class Competitor {
 	// attribute
 	private String name;
 	private int score;
-	private int scoreTournament;
 	private boolean qualification;
 	
 	/**
@@ -34,14 +33,6 @@ public class Competitor {
 	
 	public void setScore(int score) {
 		this.score = score;
-	}
-	
-	public int getScoreTournament() {
-		return this.scoreTournament;
-	}
-	
-	public void setScoreTournament(int score) {
-		this.scoreTournament = score;
 	}
 	
 	public boolean getQualification() {

@@ -25,10 +25,8 @@ class TournamentTest {
 	
 	@Test
 	public void getQualifyTestOK() {
-		Competitor c1 = new Competitor("madrid");
-		Competitor c2 = new Competitor("barcelone");
-		this.competitors.add(c1);
-		this.competitors.add(c2);
+		Competitor c1 = new Competitor("madrid");  Competitor c2 = new Competitor("barcelone");
+		this.competitors.add(c1);  this.competitors.add(c2);
 		this.tournament.setQualify(this.competitors);
 		assertTrue(this.tournament.getQualify().equals(this.competitors));
 		assertTrue(this.tournament.getQualify().size() == 2);
@@ -54,43 +52,27 @@ class TournamentTest {
 	
 	@Test
 	public void apresMatchTestOK() {
-		Competitor c1 = new Competitor("madrid");
-		Competitor c2 = new Competitor("barcelone");
-		this.competitors.add(c1);
-		this.competitors.add(c2);
+		Competitor c1 = new Competitor("madrid");  Competitor c2 = new Competitor("barcelone");
+		this.competitors.add(c1);  this.competitors.add(c2);
 		this.tournament.setQualify(this.competitors);
 		this.tournament.apresMatch(c1, c2);
-		assertTrue(c2.getScore()==-1);
+		assertTrue(c2.getQualification() == false);
+		assertTrue(c1.getScore() == 1);
+		assertTrue(c1.getQualification() == true) ;
 		
 	}
 	
-	@Test 
-	public void playTournamentTestOK() {
-		Competitor c1 = new Competitor("madrid");
-		Competitor c2 = new Competitor("barcelone");
-		Competitor c3 = new Competitor("valence");
-		Competitor c4 = new Competitor("séville");
-		this.competitors.add(c1);
-		this.competitors.add(c2);
-		this.competitors.add(c3);
-		this.competitors.add(c4);
-		this.tournament.play(this.competitors);
-		assertTrue(this.tournament.getQualify().size() == 1);
-	}
-	
-	@Test
-	public void winnerTournamentTestOK() {
-		Competitor c1 = new Competitor("madrid");
-		Competitor c2 = new Competitor("barcelone");
-		Competitor c3 = new Competitor("valence");
-		Competitor c4 = new Competitor("séville");
-		this.competitors.add(c1);
-		this.competitors.add(c2);
-		this.competitors.add(c3);
-		this.competitors.add(c4);
-		this.tournament.play(this.competitors);
-		assertTrue(this.tournament.getQualify().size() == 1);
-		assertTrue(this.tournament.winnerTournament().equals(this.tournament.getQualify().get(0)));
-	}
+	@Test public void playTournamentANDdoingRankANDwinnerTournamentTestOK() { 
+		Competitor c1 = new Competitor("madrid");  Competitor c2 = new Competitor("barcelone");
+		Competitor c3 = new Competitor("valence"); Competitor c4 = new Competitor("séville");
+	    this.competitors.add(c1); this.competitors.add(c2); 
+	    this.competitors.add(c3); this.competitors.add(c4); 
+	    this.tournament.play(this.competitors);
+	    assertTrue(this.tournament.getQualify().size() == 1);
+	    assertTrue(this.tournament.winnerTournament().contains("Le vainqueur du tournoi est " + this.tournament.getWinner() )); 
+	    assertTrue(this.tournament.getWinner().getScore() == 2);
+	} 
+	  
+	 
 
 }

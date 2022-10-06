@@ -1,13 +1,13 @@
 package competition;
 
 import java.util.*;
+import java.util.stream.*;
 
 import competitor.Competitor;
 import match.*;
 
 public class Tournament extends Competition {
 	private List<Competitor> qualify = new ArrayList<>();
-	private List<Competitor> finalRank = new ArrayList<>();
 	private Competitor winner ;
 	private Match match;
 	
@@ -50,6 +50,14 @@ public class Tournament extends Competition {
 	}
 	
 	/**
+	 * return this.winner
+	 * @return Competitor winner
+	 */
+	public Competitor getWinner() {
+		return this.winner ;
+	}
+	
+	/**
 	 * play a match between two competitors and remove the looser of the qualify list 
 	 * @param Competitor c1
 	 * @param Competitor c2
@@ -57,29 +65,31 @@ public class Tournament extends Competition {
 	public void apresMatch(Competitor c1,Competitor c2) {
 		if (this.match.winnerOfTheGame(c1, c2).equals(c1)) {
 			c2.setQualification(false) ;
-			c1.setScoreTournament(c1.getScoreTournament() + 1);
+			c1.setScore(c1.getScore() + 1);
 		}
 		else {
 			c1.setQualification(false) ;
-			c2.setScoreTournament(c2.getScoreTournament() + 1) ;
+			c2.setScore(c2.getScore() + 1) ;
 		}
 	}
 	
+/*	/**
+	 * do the rank of the tournament of a competitors list and update him in the attribute rank
+	 * @param List<Competitor> c
+	 
 	public void doingRank(List<Competitor> c) {
-		for (int i = 0; i < c.size(); i++){
-             int index = i;  
-             for (int j = i + 1; j < c.size(); j++)
-             {
-                  if (tab[j] < tab[index]){ 
-                       index = j;
-                  }
-             }
-
-             int min = tab[index];
-             tab[index] = tab[i]; 
-             tab[i] = min;
-        }
-   }
+		Map<Competitor,Integer> m = new HashMap<>() ;
+		for (int i = 0; i<this.competitors.size(); i++) {
+			m.put(this.competitors.get(i),this.competitors.get(i).getScore());
+		}
+		this.rank = m.entrySet().stream().sorted((i1, i2)
+                    -> i1.getValue().compareTo(
+                       i2.getValue())).collect(Collectors.toMap(
+                       Map.Entry::getKey,
+                       Map.Entry::getValue,
+                       (e1, e2) -> e1, LinkedHashMap::new));
+	} 
+	*/
 	
 	
 	
@@ -88,6 +98,10 @@ public class Tournament extends Competition {
 	 * @param List<Competitor> compet
 	 */
 	public void play(List<Competitor> compet) {
+		for (int z=0 ; z<this.qualify.size() ; z++) {
+			compet.get(z).setScore(0) ;         // reset the score of tournament and the attribute qualification in case
+			compet.get(z).setQualification(true) ;        // these competitors have already play a tournament
+		}
 		this.qualify.addAll(compet);
 		while (this.qualify.size() > 1) {
 			int l = this.qualify.size() ;
@@ -105,9 +119,6 @@ public class Tournament extends Competition {
 			    this.qualify.remove(c);
 			 }
 		}
-		for (int i=0 ; i<this.competitors.size() ; i+=1) {
-			
-		}
 		this.winner = this.qualify.get(0) ;
 	}
 	
@@ -116,8 +127,8 @@ public class Tournament extends Competition {
 	 * return the winner of the tournament 
 	 * @return name of the winner 
 	 */
-	public Competitor winnerTournament() {
-		return this.winner ;
+	public String winnerTournament() {
+		return "Le vainqueur du tournoi est " + this.winner ;
 	}
 
 	
