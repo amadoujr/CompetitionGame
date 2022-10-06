@@ -8,12 +8,13 @@ import java.util.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import competition.Competition;
 import competition.League;
 import competitor.Competitor;
 import match.Match;
 import match.RandomVictoryMatch;
 
-class LeagueTest {
+class LeagueTest extends CompetitionTest {
 	
 	private League league;
 	private List<Competitor> competitors;
@@ -31,7 +32,7 @@ class LeagueTest {
 	}
 	 
 	@Test
-	public void PlayMatchTest(){
+	/*public void PlayMatchTest(){
 		// create competitors
 		Competitor c1 = new Competitor("jean");
 		Competitor c2 = new Competitor("pierre");
@@ -49,5 +50,29 @@ class LeagueTest {
 		this.league.play(competitors);
 		assertEquals(c1.getScore() , 3);  // all competitors have the same points due to the use of a MockClass
 		
+	}*/
+
+	@Override
+	protected Competition createCompet() {
+		List<Competitor> c = new ArrayList<Competitor>();
+		Competitor c1 = new Competitor("jean");
+		Competitor c2 = new Competitor("pierre");
+		Competitor c3 = new Competitor("jonas");
+		Competitor c4 = new Competitor("jacob");
+
+
+		c.add(c1);
+		c.add(c2);
+		c.add(c3);
+		c.add(c4);
+		Match match = new RandomVictoryMatch();
+		
+		
+		// TODO Auto-generated method stub
+		return new League(c, match);
+	}
+	@Test
+	public void playTest() {
+		super.playTest();
 	}
 }

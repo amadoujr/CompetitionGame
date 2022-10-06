@@ -102,6 +102,7 @@ public class Tournament extends Competition {
 			 }
 		}
 		this.winner = this.qualify.get(0) ;
+		this.compteur++;
 	}
 	
 	

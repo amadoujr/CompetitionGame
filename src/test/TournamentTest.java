@@ -5,12 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import competition.Competition;
 import competition.Tournament;
 import competitor.Competitor;
 import match.Match;
+import match.RandomVictoryMatch;
 import java.util.*;
 
-class TournamentTest {
+class TournamentTest extends CompetitionTest {
 	
 	private Tournament tournament;
 	private List<Competitor> competitors;
@@ -73,7 +75,29 @@ class TournamentTest {
 	    assertTrue(this.tournament.winnerTournament().contains("Le vainqueur du tournoi est " + this.tournament.getWinner() )); 
 	    assertTrue(this.tournament.getWinner().getScore() == 2);
 	    System.out.println(this.tournament.getWinner());
-	} 
+	}
+
+	@Override
+	protected Competition createCompet() {
+		List<Competitor> c = new ArrayList<Competitor>();
+		Competitor c1 = new Competitor("jean");
+		Competitor c2 = new Competitor("pierre");
+		Competitor c3 = new Competitor("jonas");
+		Competitor c4 = new Competitor("jacob");
+
+
+		c.add(c1);
+		c.add(c2);
+		c.add(c3);
+		c.add(c4);
+		Match match = new RandomVictoryMatch();
+			// TODO Auto-generated method stub
+			return new Tournament(c, match);
+		} 
+	@Test
+	public void playTest() {
+		super.playTest();
+	}
 	  
 	 
 

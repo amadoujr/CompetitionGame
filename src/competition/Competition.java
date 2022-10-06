@@ -14,6 +14,7 @@ public abstract class Competition {
 	protected final List<Competitor> competitors;
 	protected boolean finished ;
 	public static final Display displayer = new Display();
+	protected int compteur;
 	
 	/**
 	 * initialize the constructor
@@ -22,6 +23,10 @@ public abstract class Competition {
 	public Competition(List<Competitor> competitors) {
 		this.m1 = new RandomVictoryMatch();
 		this.competitors = competitors;
+		this.compteur=0;
+	}
+	public int getcompteur() {
+		return this.compteur;
 	}
 	
 	/**
@@ -33,6 +38,7 @@ public abstract class Competition {
 			this.play(competitors);   // start the competition
 			this.finished = true;    
 		}
+		/*this.compteur++;*/
 		System.out.println();
 		this.ranking(); // display the ranking of the tournament
 	}

@@ -18,9 +18,10 @@ public class CompetitionMock extends Competition {
 
 	@Override
 	protected void play(List<Competitor> competitors) {
-		// TODO Auto-generated method stub
-		this.occurence++;
+		/*// TODO Auto-generated method stub
 		super.play();
+		this.occurence++;*/
+		
 		
 	}
 	public void play () {
