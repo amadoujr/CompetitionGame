@@ -51,8 +51,16 @@ public abstract class Competition {
 	 * @param c2 the second competitor
 	 */
 	protected void playMatch(Competitor c1, Competitor c2) {
-		Competitor winner = this.m1.winnerOfTheGame(c1, c2);
-		winner.setScore(0);
+		if (this.m1.winnerOfTheGame(c1, c2).equals(c1)) {
+			c2.setQualification(false) ;
+			c1.setScore(c1.getScore() + 1);
+			this.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");
+		}
+		else {
+			c1.setQualification(false) ;
+			c2.setScore(c2.getScore() + 1) ;
+			this.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c2 +" win!!");
+		}
 	}
 	
 	/** 

@@ -57,22 +57,6 @@ public class Tournament extends Competition {
 		return this.winner ;
 	}
 	
-	/**
-	 * play a match between two competitors and remove the looser of the qualify list 
-	 * @param Competitor c1
-	 * @param Competitor c2
-	 */
-	public void apresMatch(Competitor c1,Competitor c2) {
-		if (this.match.winnerOfTheGame(c1, c2).equals(c1)) {
-			c2.setQualification(false) ;
-			c1.setScore(c1.getScore() + 1);
-		}
-		else {
-			c1.setQualification(false) ;
-			c2.setScore(c2.getScore() + 1) ;
-		}
-	}
-	
 /*	/**
 	 * do the rank of the tournament of a competitors list and update him in the attribute rank
 	 * @param List<Competitor> c
@@ -90,9 +74,7 @@ public class Tournament extends Competition {
                        (e1, e2) -> e1, LinkedHashMap::new));
 	} 
 	*/
-	
-	
-	
+
 	/**
 	 * do the tournament and update the qualify list 
 	 * @param List<Competitor> compet
@@ -107,7 +89,7 @@ public class Tournament extends Competition {
 			int l = this.qualify.size() ;
 			Collections.shuffle(this.qualify);
 			for (int i=0 ; i<l ; i+=2) {
-				apresMatch(this.qualify.get(i),this.qualify.get(i+1));	
+				playMatch(this.qualify.get(i),this.qualify.get(i+1));	
 			}
 			List <Competitor > deleteCompetitors = new ArrayList<>() ;
 			for (Competitor c : this.qualify) {
