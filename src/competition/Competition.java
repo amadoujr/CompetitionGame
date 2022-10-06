@@ -51,7 +51,8 @@ public abstract class Competition {
 	 * @param c2 the second competitor
 	 */
 	protected void playMatch(Competitor c1, Competitor c2) {
-		// pas encore utilisée ...
+		Competitor winner = this.m1.winnerOfTheGame(c1, c2);
+		winner.setScore(0);
 	}
 	
 	/** 
@@ -67,10 +68,12 @@ public abstract class Competition {
 	public Map<Competitor,Integer> ranking(){
 		System.out.println("*** Ranking ***");
 		
+		
 		Map<Competitor,Integer> ranks = new HashMap<>();
 		for (Competitor c : competitors) {
 			ranks.put(c, c.getScore());
 		} 
+		ranks = MapUtil.sortByDescendingValue(ranks);
 		System.out.println();
 		for( Map.Entry <Competitor, Integer> entry : ranks.entrySet()) {
 			Competition.displayer.displaymsg(entry.getKey() + " - "+ entry.getValue());
