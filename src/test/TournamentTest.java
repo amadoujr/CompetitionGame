@@ -72,6 +72,7 @@ class TournamentTest {
 	    assertTrue(this.tournament.getQualify().size() == 1);
 	    assertTrue(this.tournament.winnerTournament().contains("Le vainqueur du tournoi est " + this.tournament.getWinner() )); 
 	    assertTrue(this.tournament.getWinner().getScore() == 2);
+	    System.out.println(this.tournament.getWinner());
 	} 
 	  
 	 
