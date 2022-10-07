@@ -16,3 +16,10 @@ classes suivantes : *League* && *Tournament* et les *Tests Unitaires* de chaque 
 - Je (Amadou Barro) me suis occupé de coder la classe **League** et de tester
 la méthode *play*;
 - Nathan s'est chargé de coder la classe **Tournament** et de la tester
+
+![image](/home/l3/nathan.gerussi.etu/Desktop/competition.png)
+![image](/home/l3/nathan.gerussi.etu/Desktop/competitor.png)
+![image](/home/l3/nathan.gerussi.etu/Desktop/match.png)
+![image](/home/l3/nathan.gerussi.etu/Desktop/display.png)
+![image](/home/l3/nathan.gerussi.etu/Desktop/main.png)
+![image](/home/l3/nathan.gerussi.etu/Desktop/test.png)
