@@ -22,7 +22,7 @@ public class League extends Competition {
 	public League(List<Competitor> competitors, Match m1) {
 		super(competitors);  
 		this.match = m1;
-	}
+	} 
 	
 
 	/**
@@ -44,7 +44,7 @@ public class League extends Competition {
 				}
 			}
 		}
-		this.compteur++;
+		this.compteur++;  /*used for testing Cmpetitions play()*/
 	}
 	
 	

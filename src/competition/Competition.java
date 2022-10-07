@@ -58,7 +58,7 @@ public abstract class Competition {
 	 */
 	protected void playMatch(Competitor c1, Competitor c2) {
 		if (this.m1.winnerOfTheGame(c1, c2).equals(c1)) {
-			c2.setQualification(false) ;
+			c2.setQualification(false) ; 
 			c1.setScore(c1.getScore() + 1);
 			this.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");
 		}
