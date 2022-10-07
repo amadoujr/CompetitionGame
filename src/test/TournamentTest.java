@@ -52,7 +52,7 @@ class TournamentTest extends CompetitionTest {
 	}
 
 	@Test 
-	public void playTournamentANDdoingRankANDwinnerTournamentTestOK() { 
+	public void playTournamentANDwinnerTournamentTestOK() { 
 		Competitor c1 = new Competitor("madrid");  Competitor c2 = new Competitor("barcelone");
 		Competitor c3 = new Competitor("valence"); Competitor c4 = new Competitor("séville");
 	    this.competitors.add(c1); this.competitors.add(c2); 
