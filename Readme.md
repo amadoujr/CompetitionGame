@@ -17,9 +17,45 @@ classes suivantes : *League* && *Tournament* et les *Tests Unitaires* de chaque 
 la méthode *play*;
 - Nathan s'est chargé de coder la classe **Tournament** et de la tester
 
-![image](/home/l3/nathan.gerussi.etu/Desktop/competition.png)
-![image](/home/l3/nathan.gerussi.etu/Desktop/competitor.png)
-![image](/home/l3/nathan.gerussi.etu/Desktop/match.png)
-![image](/home/l3/nathan.gerussi.etu/Desktop/display.png)
-![image](/home/l3/nathan.gerussi.etu/Desktop/main.png)
-![image](/home/l3/nathan.gerussi.etu/Desktop/test.png)
+## Semaine 2
+- Nous avons finaliser les tests
+- Génerer et éxécuter l'archive
+- Génerer les diagrammes UML
+
+
+## HowTo
+
+Pour éxécuter ces commandes , se placer dans le repertoir *l3s5-projet-2023.
+
+**Compiler les classes (par défaut via eclipse) :**
+
+- javac -classpath src -d bin src/main/MainCompet.java
+
+**génération de la documentation :**
+
+-  javadoc -classpath src -d docs -subpackages pack1 pack2
+
+
+**compilation des tests :**
+
+- javac -classpath test4poo.jar test/*.java 
+
+**Exécution des tests :**
+
+- java -jar test4poo.jar SomeClassTest
+
+**Création du Jar :**
+
+- jar cvfe compet.jar main.MainCompet -C bin
+
+**Execution du Jar :**
+
+- java -jar compet.jar 
+
+## Diagramme UML
+
+![image](/Users/amadouu/git/competitor.png)
+![image](/Users/amadouu/git/competitor.png)
+![image](/Users/amadouu/git/display.png)
+![image](/Users/amadouu/git/main.png)
+![image](/Users/amadouu/git/match.png)
