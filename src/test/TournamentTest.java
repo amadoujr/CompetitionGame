@@ -50,20 +50,7 @@ class TournamentTest extends CompetitionTest {
 		assertTrue(this.tournament.getCompetitors().get(0).equals(c1));
 		assertTrue(this.tournament.getCompetitors().size() == 1);
 	}
-	
-	
-/*	@Test
-	public void apresMatchTestOK() {
-		Competitor c1 = new Competitor("madrid");  Competitor c2 = new Competitor("barcelone");
-		this.competitors.add(c1);  this.competitors.add(c2);
-		this.tournament.setQualify(this.competitors);
-		this.tournament.playMatch(c1, c2);
-		assertTrue(c2.getQualification() == false);
-		assertTrue(c1.getScore() == 1);
-		assertTrue(c1.getQualification() == true) ;
-		
-	}*/
-	
+
 	@Test 
 	public void playTournamentANDdoingRankANDwinnerTournamentTestOK() { 
 		Competitor c1 = new Competitor("madrid");  Competitor c2 = new Competitor("barcelone");

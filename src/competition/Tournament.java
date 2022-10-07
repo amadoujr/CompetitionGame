@@ -57,24 +57,6 @@ public class Tournament extends Competition {
 		return this.winner ;
 	}
 	
-/*	/**
-	 * do the rank of the tournament of a competitors list and update him in the attribute rank
-	 * @param List<Competitor> c
-	 
-	public void doingRank(List<Competitor> c) {
-		Map<Competitor,Integer> m = new HashMap<>() ;
-		for (int i = 0; i<this.competitors.size(); i++) {
-			m.put(this.competitors.get(i),this.competitors.get(i).getScore());
-		}
-		this.rank = m.entrySet().stream().sorted((i1, i2)
-                    -> i1.getValue().compareTo(
-                       i2.getValue())).collect(Collectors.toMap(
-                       Map.Entry::getKey,
-                       Map.Entry::getValue,
-                       (e1, e2) -> e1, LinkedHashMap::new));
-	} 
-	*/
-
 	/**
 	 * do the tournament and update the qualify list 
 	 * @param List<Competitor> compet
