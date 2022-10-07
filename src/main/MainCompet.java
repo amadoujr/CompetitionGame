@@ -14,7 +14,7 @@ public class MainCompet {
 	public static void main(String[] args) {
 		/**
 		 * allow user to enter numbers of competitors 
-		 */
+		 */ 
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Veuillez saisir le nombre de compétiteurs : ");
