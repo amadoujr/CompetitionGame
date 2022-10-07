@@ -17,14 +17,11 @@ import match.RandomVictoryMatch;
 class LeagueTest extends CompetitionTest {
 	
 	private League league;
-	private List<Competitor> competitors;
-	private Match m1; 
-	
+
 	@BeforeEach
 	void setUp() throws Exception { 
-		this.competitors = new ArrayList<>();
-		this.m1 = new MockMatch();
-		this.league = new League(competitors , m1);
+		
+		this.league = new League(this.competitors , this.m1);
 	}
 
 	@Test 
@@ -34,6 +31,8 @@ class LeagueTest extends CompetitionTest {
 	@Test
 	/*public void PlayMatchTest(){
 		// create competitors
+		Match matchmock =new MockMatch();
+		
 		Competitor c1 = new Competitor("jean");
 		Competitor c2 = new Competitor("pierre");
 		Competitor c3 = new Competitor("jonas");
@@ -44,11 +43,15 @@ class LeagueTest extends CompetitionTest {
 		this.competitors.add(c2);
 		this.competitors.add(c3);
 		this.competitors.add(c4);
+		League league = new League(this.competitors,matchmock);
 		
 		int nb_points  = 0;
+		System.out.println(this.competitors);
 		assertEquals(c1.getScore(), nb_points);
-		this.league.play(competitors);
-		assertEquals(c1.getScore() , 3);  // all competitors have the same points due to the use of a MockClass
+		league.play(competitors);
+		System.out.println(this.competitors);
+		System.out.println(c1.getScore());
+		assertEquals(c1.getScore() , 2);  // all competitors have the same points due to the use of a MockClass
 		
 	}*/
 
@@ -73,6 +76,6 @@ class LeagueTest extends CompetitionTest {
 	}
 	@Test
 	public void playTest() {
-		super.playTest();
+		super.playTest(); 
 	}
 }

@@ -32,6 +32,10 @@ public class League extends Competition {
 	 * @param c2 the second competitor
 	 */
 	public void play(List<Competitor> competitors){
+		for (int z=0 ; z<competitors.size() ; z++) {
+			competitors.get(z).setScore(0) ;         // reset the score of tournament and the attribute qualification in case
+			competitors.get(z).setQualification(true) ;        // these competitors have already play a tournament
+		}
 		Competitor winner;
 		for (Competitor comp1 : competitors) {         
 			for (Competitor comp2 : competitors) {

@@ -15,16 +15,13 @@ import java.util.*;
 class TournamentTest extends CompetitionTest {
 	
 	private Tournament tournament;
-	private List<Competitor> competitors;
-	private Match m1; 
+	
 
 	@BeforeEach
 	void setUp() throws Exception { 
-		this.competitors = new ArrayList<>();
-		this.m1 = new MockMatch();
 		this.tournament = new Tournament(competitors , m1);
 	}
-	
+	 
 	@Test
 	public void getQualifyTestOK() {
 		Competitor c1 = new Competitor("madrid");  Competitor c2 = new Competitor("barcelone");
@@ -52,17 +49,7 @@ class TournamentTest extends CompetitionTest {
 	}
 	
 	
-/*	@Test
-	public void apresMatchTestOK() {
-		Competitor c1 = new Competitor("madrid");  Competitor c2 = new Competitor("barcelone");
-		this.competitors.add(c1);  this.competitors.add(c2);
-		this.tournament.setQualify(this.competitors);
-		this.tournament.playMatch(c1, c2);
-		assertTrue(c2.getQualification() == false);
-		assertTrue(c1.getScore() == 1);
-		assertTrue(c1.getQualification() == true) ;
-		
-	}*/
+
 	
 	@Test 
 	public void playTournamentANDdoingRankANDwinnerTournamentTestOK() { 
@@ -97,8 +84,9 @@ class TournamentTest extends CompetitionTest {
 	@Test
 	public void playTest() {
 		super.playTest();
-	}
+		
+	} 
 	  
-	 
+	  
 
 }

@@ -80,7 +80,7 @@ public class Tournament extends Competition {
 	 * @param List<Competitor> compet
 	 */
 	public void play(List<Competitor> compet) {
-		for (int z=0 ; z<this.qualify.size() ; z++) {
+		for (int z=0 ; z<compet.size() ; z++) {
 			compet.get(z).setScore(0) ;         // reset the score of tournament and the attribute qualification in case
 			compet.get(z).setQualification(true) ;        // these competitors have already play a tournament
 		}

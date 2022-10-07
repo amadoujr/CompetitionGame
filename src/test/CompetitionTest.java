@@ -17,8 +17,8 @@ import match.RandomVictoryMatch;
 public abstract class CompetitionTest {
 	
 	protected Competition compet;
-	private  List<Competitor> competitors ;
-	private Match m1; 
+	protected   List<Competitor> competitors ;
+	protected  Match m1; 
 
 	@BeforeEach
 	void init() {
@@ -32,7 +32,7 @@ public abstract class CompetitionTest {
 	
 	/* on teste la methode play() de competition */
 	@Test
-	public void Playtest() {
+	public void Playtestompet() {
 		/*Competition tour = new Tournament (this.competitors, this.m1);*/
 		CompetitionMock mock = new CompetitionMock(this.competitors);
 		assertTrue(mock.getOccurence()== 0);
