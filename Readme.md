@@ -12,7 +12,7 @@
 ## Semaine 1
 
 Durant cette semaine, on s'était fixé comme objectifs de : réaliser les deux
-classes suivantes : *League* && *Tournament* et les *Tests Unitaires* de chaque classe.
+classes suivantes : *League* && *Tournament* et les *Tests Unitaires* de chaque classe.  
 - Je (Amadou Barro) me suis occupé de coder la classe **League** et de tester
 la méthode *play*;
 - Nathan s'est chargé de coder la classe **Tournament** et de la tester
@@ -54,8 +54,8 @@ Pour éxécuter ces commandes , se placer dans le repertoir *l3s5-projet-2023.
 
 ## Diagramme UML
 
-![image](/Users/amadouu/git/competitor.png)
-![image](/Users/amadouu/git/competitor.png)
-![image](/Users/amadouu/git/display.png)
-![image](/Users/amadouu/git/main.png)
-![image](/Users/amadouu/git/match.png)
+![image](UML/competitor.png)
+![image](UML/competitor.png)
+![image](UML/display.png)
+![image](UML/main.png)
+![image](UML/match.png)
