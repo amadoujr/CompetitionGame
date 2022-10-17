@@ -18,10 +18,6 @@ public class Tournament extends Competition {
 	 */
 	public Tournament(List<Competitor> competitors, Match m1) {
 		super(competitors);
-		if( competitors.size() % 2 != 0) {
-			System.out.println("le nombre de compétiteurs doit être une puissance de 2");
-			System.exit(0);
-		}
 		this.match = m1;	
 	}
 
@@ -61,30 +57,34 @@ public class Tournament extends Competition {
 	 * do the tournament and update the qualify list 
 	 * @param List<Competitor> compet
 	 */
-	public void play(List<Competitor> compet) {
-		for (int z=0 ; z<compet.size() ; z++) {
-			compet.get(z).setScore(0) ;         // reset the score of tournament and the attribute qualification in case
-			compet.get(z).setQualification(true) ;        // these competitors have already play a tournament
+	public void play(List<Competitor> compet) throws NotRowofTwoException {
+		if (compet.size() % 2 != 0) {
+			throw new NotRowofTwoException("Le nombre de compétiteurs n'est pas une puissance de deux");
 		}
-		this.qualify.addAll(compet);
-		while (this.qualify.size() > 1) {
-			int l = this.qualify.size() ;
-			Collections.shuffle(this.qualify);
-			for (int i=0 ; i<l ; i+=2) {
-				playMatch(this.qualify.get(i),this.qualify.get(i+1));	
+		else {
+			for (int z=0 ; z<compet.size() ; z++) {
+				compet.get(z).setQualification(true) ;        // these competitors have already play a tournament
 			}
-			List <Competitor > deleteCompetitors = new ArrayList<>() ;
-			for (Competitor c : this.qualify) {
-			    if (c.getQualification() == false) {
-			    	deleteCompetitors.add(c);
-			    }
-			 }
-			for (Competitor c : deleteCompetitors) {
-			    this.qualify.remove(c);
-			 }
-		}
-		this.winner = this.qualify.get(0) ;
-		this.compteur++;
+			this.qualify.addAll(compet);
+			while (this.qualify.size() > 1) {
+				int l = this.qualify.size() ;
+				Collections.shuffle(this.qualify);
+				for (int i=0 ; i<l ; i+=2) {
+					playMatch(this.qualify.get(i),this.qualify.get(i+1));	
+				}
+				List <Competitor > deleteCompetitors = new ArrayList<>() ;
+				for (Competitor c : this.qualify) {
+				    if (c.getQualification() == false) {
+				    	deleteCompetitors.add(c);
+				    }
+				 }
+				for (Competitor c : deleteCompetitors) {
+				    this.qualify.remove(c);
+				 }
+			}
+			this.winner = this.qualify.get(0) ;
+			this.compteur++;
+			}
 	}
 	
 	

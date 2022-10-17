@@ -15,7 +15,7 @@ public abstract class Competition {
 	protected boolean finished ;
 	public static final Display displayer = new Display();
 	protected int compteur;
-	
+	Map<Competitor,Integer> score;
 	/**
 	 * initialize the constructor
 	 */
@@ -24,9 +24,25 @@ public abstract class Competition {
 		this.m1 = new RandomVictoryMatch();
 		this.competitors = competitors;
 		this.compteur=0;
+		this.score = new HashMap<>();
+		this.initializeScore();
+	}
+	
+	public Map<Competitor, Integer> getScore(
+			) {
+		return score;
+	}
+	public void setScore(Map<Competitor, Integer> score) {
+		this.score = score;
 	}
 	public int getcompteur() {
 		return this.compteur;
+	}
+	
+	public void initializeScore () {
+		for (int i=0 ; i<this.competitors.size(); i++) {
+			this.score.put(this.competitors.get(i), 0);
+		}
 	}
 	
 	/**
@@ -35,12 +51,19 @@ public abstract class Competition {
 	 
 	public void play() {
 		while(!this.isFinished()) {   // end of the game reached ?
-			this.play(competitors);   // start the competition
-			this.finished = true;    
+			try {
+				this.play(competitors);
+			} catch (NotRowofTwoException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.exit(0);
+			}   // start the competition
+			this.finished = true;   
 		}
-		/*this.compteur++;*/
 		System.out.println();
-		this.ranking(); // display the ranking of the tournament
+		this.ranking(); 
+		this.displayRanking(); // display the ranking of the tournament
+		
 	}
 	
 	/**
@@ -59,12 +82,12 @@ public abstract class Competition {
 	protected void playMatch(Competitor c1, Competitor c2) {
 		if (this.m1.winnerOfTheGame(c1, c2).equals(c1)) {
 			c2.setQualification(false) ; 
-			c1.setScore(c1.getScore() + 1);
+			this.score.put(c1, this.score.get(c1)+1) ;
 			this.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");
 		}
 		else {
 			c1.setQualification(false) ;
-			c2.setScore(c2.getScore() + 1) ;
+			this.score.put(c2, this.score.get(c2)+1) ;
 			this.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c2 +" win!!");
 		}
 	}
@@ -74,29 +97,26 @@ public abstract class Competition {
 	 * @param competitor
 	 */
 
-	protected abstract void play(List<Competitor> competitors);
+	protected abstract void play(List<Competitor> competitors) throws NotRowofTwoException;
 	
 	/**
 	 * @return ranking of each competitors
 	 */
 	public Map<Competitor,Integer> ranking(){
-		System.out.println("*** Ranking ***");
-		
-		
 		Map<Competitor,Integer> ranks = new HashMap<>();
 		for (Competitor c : competitors) {
-			ranks.put(c, c.getScore());
+			ranks.put(c, this.score.get(c));
 		} 
 		ranks = MapUtil.sortByDescendingValue(ranks);
+		return ranks;
+	}
+	
+	public void displayRanking() {
+		System.out.println("*** Ranking ***");
 		System.out.println();
-		for( Map.Entry <Competitor, Integer> entry : ranks.entrySet()) {
+		for( Map.Entry <Competitor, Integer> entry : this.ranking().entrySet()) {
 			Competition.displayer.displaymsg(entry.getKey() + " - "+ entry.getValue());
 		}
-		return ranks;
-		
-		
-		
-		
 	}
 	
 }

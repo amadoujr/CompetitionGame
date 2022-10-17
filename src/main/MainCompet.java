@@ -39,7 +39,6 @@ public class MainCompet {
 		else {
 			compet = new Tournament(competitors , match);
 		}
-		
 		compet.play();
 	}
 

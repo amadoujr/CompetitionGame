@@ -55,7 +55,7 @@ Pour éxécuter ces commandes , se placer dans le repertoir *l3s5-projet-2023.
 ## Diagramme UML
 
 ![image](UML/competitor.png)
-![image](UML/competitor.png)
+![image](UML/competition.png)
 ![image](UML/display.png)
 ![image](UML/main.png)
 ![image](UML/match.png)
