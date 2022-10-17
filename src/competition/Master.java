@@ -56,7 +56,7 @@ public class Master extends Competition {
 		{
 			for(League c :this.leagues)
 			{
-				
+				/**/
 			}
 			
 		}
