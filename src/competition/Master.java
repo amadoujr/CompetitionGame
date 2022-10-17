@@ -8,12 +8,13 @@ import competitor.Competitor;
 public class Master extends Competition {
 		
 		private String selection_condition ;
+		private List<League> leagues ;
 		
 
 	public Master(List<Competitor> competitors, String condition) {
 		super(competitors);
 		this.selection_condition = condition;
-		
+		this.leagues= new ArrayList<League>();
 		
 	}
 
@@ -45,7 +46,7 @@ public class Master extends Competition {
 	}
 	public void launchpools(List<List<Competitor>> pools) {
 		for(List<Competitor> c :pools) {
-			 new League(c,this.m1);
+			 this.leagues.add(new League(c,this.m1));
 		}
 	}
 	
@@ -53,6 +54,10 @@ public class Master extends Competition {
 	public void selection_rules() {
 		if (this.selection_condition == "only winners") /* que les gagnants des differentes pool seront selectionne*/
 		{
+			for(League c :this.leagues)
+			{
+				
+			}
 			
 		}
 		
