@@ -7,15 +7,15 @@ import competitor.Competitor;
 
 public class Master extends Competition {
 		
-		private String selection_condition ;
+	
 		private List<League> leagues ;
+		private Selection selection;   // will allow us to use the type of selection methods we want 
 		
 
-	public Master(List<Competitor> competitors, String condition) {
+	public Master(List<Competitor> competitors, Selection selection) {
 		super(competitors);
-		this.selection_condition = condition;
 		this.leagues= new ArrayList<League>();
-		
+		this.selection = selection;
 	}
 
 	@Override
@@ -51,16 +51,6 @@ public class Master extends Competition {
 	}
 	
 	/* applique les regles de selections au pool */
-	public void selection_rules() {
-		if (this.selection_condition == "only winners") /* que les gagnants des differentes pool seront selectionne*/
-		{
-			for(League c :this.leagues)
-			{
-				/**/
-			}
-			
-		}
-		
-	}
+	public void selection_rules() {}
 
 }
