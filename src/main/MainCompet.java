@@ -8,6 +8,8 @@ import competition.Tournament;
 import competitor.Competitor;
 import match.Match;
 import match.RandomVictoryMatch;
+import competition.SelectionOneGStage;
+import competition.*;
 
 public class MainCompet {
 
@@ -39,7 +41,11 @@ public class MainCompet {
 		else {
 			compet = new Tournament(competitors , match);
 		}
-		compet.play();
+		//compet.play();
+		
+		Master m1 = new Master(competitors,new SelectionOneGStage());
+		SelectionOneGStage s1 = new SelectionOneGStage();
+		System.out.println(s1.doPartition(competitors));
 	}
 
 }
