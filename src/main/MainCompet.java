@@ -44,9 +44,9 @@ public class MainCompet {
 		//compet.play();
 		
 		Master m1 = new Master(competitors,new SelectionOneGStage());
-		SelectionOneGStage s1 = new SelectionOneGStage();
-		/*System.out.println(s1.doPartition(competitors));*/
-		System.out.println(m1.setpools(3));
+		SelectionThreeGStage s2 = new SelectionThreeGStage();
+		System.out.println(s2.doPartition(competitors));
+		//System.out.println(m1.setpools(3));
 	}
 
 }

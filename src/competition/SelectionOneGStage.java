@@ -7,7 +7,6 @@ import competitor.Competitor;
 
 public class SelectionOneGStage implements Selection {
 
-
 	@Override
 	public void selectionType(List<Competitor> competitors) {
 		// TODO Auto-generated method stub
@@ -29,5 +28,22 @@ public class SelectionOneGStage implements Selection {
 			gstage.add(competitors.subList(i, Math.min(size, i + nb)));	
 		}
 		return gstage;
+	}
+
+	@Override
+	public List<Competitor> getFinalist(List<List<Competitor>> qualified) {
+		// TODO Auto-generated method stub
+		List<Competitor> qualifiedcompetitor = new ArrayList<>();
+		
+		for(List<Competitor> comp : qualified ){
+			for (Competitor c1 : comp) {
+				for (Competitor c2 : comp) {
+					if (c1!=c2) {
+				// To do
+					}
+				}
+			}
+		}
+		return null;
 	}
 }
