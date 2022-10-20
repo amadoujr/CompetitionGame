@@ -32,14 +32,14 @@ public class Master extends Competition {
 		while(pools_list.size()!= nb_pool_voulue) 
 		{ 
 			List<Competitor> elem = new ArrayList<Competitor>();
-			for(int i = 0 + compteur;i<nb_pool_player+compteur;i++)
+			for( int i = 0 + compteur;i<nb_pool_player+compteur;i++)
 			{
 				
 				elem.add(this.competitors.get(i));
 				
 			}
 			pools_list.add(elem);
-			this.compteur +=nb_pool_voulue;
+			compteur +=nb_pool_player;
 		}
 		
 		return pools_list;
@@ -51,6 +51,9 @@ public class Master extends Competition {
 	}
 	
 	/* applique les regles de selections au pool */
-	public void selection_rules() {}
+	public void selection_rules() {
+		
+		
+	}
 
 }
