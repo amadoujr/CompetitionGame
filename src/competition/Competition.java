@@ -28,6 +28,7 @@ public abstract class Competition {
 		this.initializeScore();
 	}
 	
+	public List<Competitor>getCompetitors() { return this.competitors ;}
 	public Map<Competitor, Integer> getScore(
 			) {
 		return score;

@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -69,6 +70,8 @@ class TournamentTest extends CompetitionTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    
+	    System.out.println(this.tournament.getQualify());
 	    assertTrue(this.tournament.getQualify().size() == 1);
 	    assertTrue(this.tournament.winnerTournament().contains("Le vainqueur du tournoi est " + this.tournament.getWinner() )); 
 	    assertTrue(this.tournament.getScore().get(c1) == 3);
@@ -97,7 +100,15 @@ class TournamentTest extends CompetitionTest {
 		super.playTest();
 		
 	} 
-	  
+	@Test
+	public void rankingTest() {
+		System.out.println("-----------");
+		System.out.println(this.compet.ranking());
+		super.rankingTest();
+		Competitor c1 = compet.getCompetitors().get(0);
+		System.out.println(c1);
+		assertTrue(this.compet.getScore().get(c1)==2);
+	}
 	  
 
 }

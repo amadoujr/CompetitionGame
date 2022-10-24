@@ -66,7 +66,7 @@ public class Tournament extends Competition {
 			this.qualify.addAll(compet);
 			while (this.qualify.size() > 1) {
 				int l = this.qualify.size() ;
-				Collections.shuffle(this.qualify);
+				//Collections.shuffle(this.qualify); bloque le fonctionnement des testes de ranking 
 				for (int i=0 ; i<l ; i+=2) {
 					playMatch(this.qualify.get(i),this.qualify.get(i+1));	
 				}

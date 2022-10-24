@@ -61,7 +61,7 @@ class LeagueTest extends CompetitionTest {
 		System.out.println("-----------");
 		System.out.println(this.compet.ranking());
 		super.rankingTest();
-		Competitor c1 = compet.g;
+		Competitor c1 = compet.getCompetitors().get(0);
 		System.out.println(c1);
 		assertTrue(this.compet.getScore().get(c1)==3);
 	}
