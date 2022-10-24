@@ -10,4 +10,5 @@ public interface Selection {
 	public List<List<Competitor>> doPartition(List<Competitor> competitors);
 	
 	public List<Competitor> getFinalist(List<List<Competitor>> qualified);
+	
 }
