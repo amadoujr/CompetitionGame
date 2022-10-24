@@ -2,13 +2,13 @@ package main;
 
 import java.util.*;
 
+
 import competition.Competition;
 import competition.League;
 import competition.Tournament;
 import competitor.Competitor;
 import match.Match;
 import match.RandomVictoryMatch;
-import competition.SelectionOneGStage;
 import competition.*;
 
 public class MainCompet {
@@ -43,10 +43,7 @@ public class MainCompet {
 		}
 		//compet.play();
 		
-		Master m1 = new Master(competitors,new SelectionOneGStage());
-		SelectionThreeGStage s2 = new SelectionThreeGStage();
-		System.out.println(s2.doPartition(competitors));
-		//System.out.println(m1.setpools(3));
+
 	}
 
 }
