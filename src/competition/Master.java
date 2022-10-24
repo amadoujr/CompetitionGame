@@ -4,55 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 import competitor.Competitor;
+import match.Match;
+import partition.Partition;
 
 public class Master extends Competition {
 		
-	
+		/**
+		 * Attribute
+		 * selection - will allow us to choose the type of selection methods we want
+		 * partition - will allow us to choose the type or partition methods we want
+		 */
 		private List<League> leagues ;
-		private Selection selection;   // will allow us to use the type of selection methods we want 
+		private Selection selection;
+		private Partition partition;
+		
 		
 
-	public Master(List<Competitor> competitors, Selection selection) {
-		super(competitors);
+	public Master(List<Competitor> competitors, Match match, Selection selection , Partition partition) {
+		super(competitors,match);
 		this.leagues= new ArrayList<League>();
 		this.selection = selection;
+		this.partition = partition;
+		this.play(competitors);
 	}
 
 	@Override
 	protected void play(List<Competitor> competitors) {
 		// TODO Auto-generated method stub
-		
-	}
-	
-	/**
-	 * this methods partition the list of competitors sublist of  competitors 
-	 * @param competitors all competitors
-	 * @return number of group stage
-	 */
-	public List<List<Competitor>> setpools(int nb_pool_voulue){
-		int compteur =0;
-		int nb_pool_player = this.competitors.size()/nb_pool_voulue ;
-		List<List<Competitor>> pools_list = new ArrayList<>();
-		while(pools_list.size()!= nb_pool_voulue) 
-		{ 
-			List<Competitor> elem = new ArrayList<Competitor>();
-			for( int i = 0 + compteur;i<nb_pool_player+compteur;i++)
-			{
-				
-				elem.add(this.competitors.get(i));
-				
-			}
-			pools_list.add(elem);
-			compteur +=nb_pool_player;
-		}
-		
-		return pools_list;
+		List<List<Competitor>> pools = new ArrayList<>();
+		pools = this.partition.doPartition(competitors);
+		this.launchpools(pools);
+		this.selection.getFinalist(leagues);
+
 	}
 	
 	
 	public void launchpools(List<List<Competitor>> pools) {
 		for(List<Competitor> c :pools) {
-			 this.leagues.add(new League(c,this.m1));
+			 this.leagues.add(new League(c,this.match));
 		}
 	}
 	

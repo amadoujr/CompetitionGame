@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import competition.Competition;
+import competition.NotRowofTwoException;
 import competition.Tournament;
 import competitor.Competitor;
 import match.Match;
@@ -19,7 +20,8 @@ class TournamentTest extends CompetitionTest {
 
 	@BeforeEach
 	void setUp() throws Exception { 
-		this.tournament = new Tournament(competitors , m1);
+		Match m = new MockMatch();
+		this.tournament = new Tournament(competitors ,m);
 	}
 	 
 	@Test
@@ -61,10 +63,15 @@ class TournamentTest extends CompetitionTest {
 		Competitor c3 = new Competitor("valence"); Competitor c4 = new Competitor("séville");
 	    this.competitors.add(c1); this.competitors.add(c2); 
 	    this.competitors.add(c3); this.competitors.add(c4); 
-	    this.tournament.play(this.competitors);
+	    try {
+			this.tournament.play(this.competitors);
+		} catch (NotRowofTwoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    assertTrue(this.tournament.getQualify().size() == 1);
 	    assertTrue(this.tournament.winnerTournament().contains("Le vainqueur du tournoi est " + this.tournament.getWinner() )); 
-	    assertTrue(this.tournament.getWinner().getScore() == 2);
+	    assertTrue(this.tournament.getScore().get(c1) == 3);
 	    System.out.println(this.tournament.getWinner());
 	}
 
@@ -81,10 +88,10 @@ class TournamentTest extends CompetitionTest {
 		c.add(c2);
 		c.add(c3);
 		c.add(c4);
-		Match match = new RandomVictoryMatch();
-			// TODO Auto-generated method stub
-			return new Tournament(c, match);
+		Match match = new MockMatch();
+		return new Tournament(c, match);
 		} 
+	
 	@Test
 	public void playTest() {
 		super.playTest();

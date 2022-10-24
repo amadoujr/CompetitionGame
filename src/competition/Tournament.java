@@ -9,16 +9,14 @@ import match.*;
 public class Tournament extends Competition {
 	private List<Competitor> qualify = new ArrayList<>();
 	private Competitor winner ;
-	private Match match;
 	
 	/**
 	 * initialize the tournament
 	 * @param List<Competitor> competitors the list of competitors of the tournament
 	 * @param Match m1 the type of match who will get played during the tournament 
 	 */
-	public Tournament(List<Competitor> competitors, Match m1) {
-		super(competitors);
-		this.match = m1;	
+	public Tournament(List<Competitor> competitors, Match match) {
+		super(competitors,match);
 	}
 
 	/**

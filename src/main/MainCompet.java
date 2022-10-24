@@ -9,6 +9,7 @@ import competition.Tournament;
 import competitor.Competitor;
 import match.Match;
 import match.RandomVictoryMatch;
+import partition.PartitionXByStage;
 import competition.*;
 
 public class MainCompet {
@@ -41,9 +42,9 @@ public class MainCompet {
 		else {
 			compet = new Tournament(competitors , match);
 		}
-		//compet.play();
+		compet.play();
 		
-
+		
 	}
 
 }

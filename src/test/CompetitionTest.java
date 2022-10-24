@@ -18,13 +18,11 @@ public abstract class CompetitionTest {
 	
 	protected Competition compet;
 	protected   List<Competitor> competitors ;
-	protected  Match m1; 
 
 	@BeforeEach
 	void init() {
 		this.compet = this.createCompet();
 		this.competitors = new ArrayList<Competitor>(); 
-		this.m1= new RandomVictoryMatch();
 	}
 
 	protected abstract Competition createCompet();
@@ -32,9 +30,10 @@ public abstract class CompetitionTest {
 	
 	/* on teste la methode play() de competition */
 	@Test
-	public void Playtestompet() {
+	public void PlaytestCompet() {
 		/*Competition tour = new Tournament (this.competitors, this.m1);*/
-		CompetitionMock mock = new CompetitionMock(this.competitors);
+		Match m = new MockMatch();
+		CompetitionMock mock = new CompetitionMock(this.competitors,m);
 		assertTrue(mock.getOccurence()== 0);
 		mock.play();
 		assertTrue(mock.getOccurence()== 1);
@@ -46,6 +45,14 @@ public abstract class CompetitionTest {
 		assertTrue(this.compet.getcompteur() == 0 );
 		this.compet.play();
 		assertTrue(this.compet.getcompteur() == 1 );
+
+		
+	}
+	@Test
+	public void rankingTest() {
+		System.out.println(this.competitors);
+		this.compet.play();
+		
 		
 	}
 	

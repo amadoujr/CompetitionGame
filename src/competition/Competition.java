@@ -10,7 +10,7 @@ public abstract class Competition {
 	
 	// Attribute
 
-	protected Match m1;
+	protected Match match;
 	protected final List<Competitor> competitors;
 	protected boolean finished ;
 	public static final Display displayer = new Display();
@@ -20,8 +20,8 @@ public abstract class Competition {
 	 * initialize the constructor
 	 */
 	
-	public Competition(List<Competitor> competitors) {
-		this.m1 = new RandomVictoryMatch();
+	public Competition(List<Competitor> competitors, Match m1) {
+		this.match = m1;
 		this.competitors = competitors;
 		this.compteur=0;
 		this.score = new HashMap<>();
@@ -54,10 +54,9 @@ public abstract class Competition {
 			try {
 				this.play(competitors);
 			} catch (NotRowofTwoException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.exit(0);
-			}   // start the competition
+			}   
 			this.finished = true;   
 		}
 		System.out.println();
@@ -80,7 +79,7 @@ public abstract class Competition {
 	 * @param c2 the second competitor
 	 */
 	protected void playMatch(Competitor c1, Competitor c2) {
-		if (this.m1.winnerOfTheGame(c1, c2).equals(c1)) {
+		if (this.match.winnerOfTheGame(c1, c2).equals(c1)) {
 			c2.setQualification(false) ; 
 			this.score.put(c1, this.score.get(c1)+1) ;
 			this.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");

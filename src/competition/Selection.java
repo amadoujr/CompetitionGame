@@ -4,9 +4,11 @@ import java.util.*;
 
 public interface Selection {
 	
-	
-	public void selectionType( List<Competitor> competitors);
-	
-	public List<Competitor> getFinalist(List<List<Competitor>> qualified);
+	/**
+	 * this methods return competitors who's reach the final stage
+	 * @param qualified 
+	 * @return
+	 */
+	public List<Competitor> getFinalist(List<League> qualified);
 	
 }

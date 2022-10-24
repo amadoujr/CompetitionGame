@@ -13,15 +13,13 @@ public class League extends Competition {
 	 */
 	
 	
-	private Match match;
 
 	/**
 	 * Initialize the constructor
 	 * @param competitors a list contains all competitors
 	 */
-	public League(List<Competitor> competitors, Match m1) {
-		super(competitors);  
-		this.match = m1;
+	public League(List<Competitor> competitors, Match match) {
+		super(competitors,match);  
 	} 
 	
 

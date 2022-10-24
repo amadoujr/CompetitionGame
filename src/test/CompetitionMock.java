@@ -4,14 +4,15 @@ import java.util.List;
 
 import competition.Competition;
 import competitor.Competitor;
+import match.Match;
 
 public class CompetitionMock extends Competition {
 	
 	private int occurence ;
 	
 	
-	public CompetitionMock(List<Competitor> c) {
-		super(c);
+	public CompetitionMock(List<Competitor> c,Match match) {
+		super(c, match);
 		this.occurence = 0;
 		
 	}
