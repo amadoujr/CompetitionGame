@@ -10,7 +10,6 @@ import competitor.Competitor;
 class CompetitorTest {
 	
 	private String name;
-	private int score;
 	private Competitor competitor;
 	
 	@BeforeEach
@@ -30,17 +29,7 @@ class CompetitorTest {
 		assertTrue(this.competitor.getName().equals("BetonArmé"));
 	}
 	
-	@Test
-	public void getScoreTestOK() {
-		assertTrue(this.competitor.getScore() == 0);
-	}
-	
-	@Test
-	public void setScoreTestOK() {
-		this.competitor.setScore(5);
-		assertTrue(this.competitor.getScore() == 5);
-	}
-	
+
 	@Test
 	public void getQualificationTestOK() {
 		assertTrue(this.competitor.getQualification() == true);

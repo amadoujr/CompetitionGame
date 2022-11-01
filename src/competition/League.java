@@ -30,7 +30,6 @@ public class League extends Competition {
 	 * @param c2 the second competitor
 	 */
 	public void play(List<Competitor> competitors){
-		Competitor winner;
 		for (Competitor comp1 : competitors) {         
 			for (Competitor comp2 : competitors) {
 				if (comp1 != comp2) {	

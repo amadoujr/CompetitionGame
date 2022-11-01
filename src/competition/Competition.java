@@ -15,7 +15,7 @@ public abstract class Competition {
 	protected boolean finished ;
 	public static final Display displayer = new Display();
 	protected int compteur;
-	Map<Competitor,Integer> score;
+	protected Map<Competitor,Integer> score;
 	/**
 	 * initialize the constructor
 	 */
@@ -28,18 +28,38 @@ public abstract class Competition {
 		this.initializeScore();
 	}
 	
-	public List<Competitor>getCompetitors() { return this.competitors ;}
-	public Map<Competitor, Integer> getScore(
-			) {
+	/**
+	 * 
+	 * @return the list of competitors
+	 */
+	public List<Competitor>getCompetitors() { 
+		return this.competitors ;
+	}
+	/**
+	 * 
+	 * @return a map which contains names and scores of each competitors
+	 */
+	public Map<Competitor, Integer> getScore() {
 		return score;
 	}
+	/**
+	 * set score of competitors
+	 * @param score
+	 */
 	public void setScore(Map<Competitor, Integer> score) {
 		this.score = score;
 	}
+	/**
+	 * Used Just for the JUnit test
+	 * @return 
+	 */
 	public int getcompteur() {
 		return this.compteur;
 	}
 	
+	/**
+	 * reset the score of competitors to zero before the next competition
+	 */
 	public void initializeScore () {
 		for (int i=0 ; i<this.competitors.size(); i++) {
 			this.score.put(this.competitors.get(i), 0);
@@ -83,12 +103,12 @@ public abstract class Competition {
 		if (this.match.winnerOfTheGame(c1, c2).equals(c1)) {
 			c2.setQualification(false) ; 
 			this.score.put(c1, this.score.get(c1)+1) ;
-			this.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");
+			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");
 		}
 		else {
 			c1.setQualification(false) ;
 			this.score.put(c2, this.score.get(c2)+1) ;
-			this.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c2 +" win!!");
+			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c2 +" win!!");
 		}
 	}
 	
@@ -96,21 +116,20 @@ public abstract class Competition {
 	 * organize match between competitors
 	 * @param competitor
 	 */
-
 	protected abstract void play(List<Competitor> competitors) throws NotRowofTwoException;
 	
 	/**
+	 * sort competitors by points descendant;
 	 * @return ranking of each competitors
 	 */
 	public Map<Competitor,Integer> ranking(){
-		Map<Competitor,Integer> ranks = new HashMap<>();
-		for (Competitor c : competitors) {
-			ranks.put(c, this.score.get(c));
-		} 
-		ranks = MapUtil.sortByDescendingValue(ranks);
-		return ranks;
+		score = MapUtil.sortByDescendingValue(score);
+		return score;
 	}
 	
+	/**
+	 * display ranking of the competition
+	 */
 	public void displayRanking() {
 		System.out.println("*** Ranking ***");
 		System.out.println();

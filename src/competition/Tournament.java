@@ -1,7 +1,6 @@
 package competition;
 
 import java.util.*;
-import java.util.stream.*;
 
 import competitor.Competitor;
 import match.*;
@@ -83,6 +82,8 @@ public class Tournament extends Competition {
 			this.winner = this.qualify.get(0) ;
 			this.compteur++;
 			}
+		System.out.println();
+		System.out.println(this.winnerTournament());
 	}
 	
 	
@@ -91,7 +92,7 @@ public class Tournament extends Competition {
 	 * @return name of the winner 
 	 */
 	public String winnerTournament() {
-		return "Le vainqueur du tournoi est " + this.winner ;
+		return "The winner of this tournament is " + this.winner ;
 	}
 
 	
