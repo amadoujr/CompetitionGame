@@ -2,6 +2,7 @@ package selection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import competitor.Competitor;
 import competition.*;
@@ -26,6 +27,12 @@ public class SelectionTwo implements Selection {
 		}
 		System.out.println(qualifiedcompet);
 		return qualifiedcompet;
+	}
+
+	@Override
+	public List<Competitor> selectPlayer(Map<Competitor, Integer> map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

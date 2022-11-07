@@ -17,6 +17,7 @@ public class MainCompet {
 
 	public static void main(String[] args) {
 		
+		
 		/**
 		 * allow user to enter numbers of competitors 
 		 */ 

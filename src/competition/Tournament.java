@@ -55,7 +55,7 @@ public class Tournament extends Competition {
 	 * @param List<Competitor> compet
 	 */
 	public void play(List<Competitor> compet) throws NotRowofTwoException {
-		if (compet.size() % 2 != 0) {
+		if (!this.isPowOftwo(compet.size())) {
 			throw new NotRowofTwoException("Le nombre de compétiteurs n'est pas une puissance de deux");
 		}
 		else {
@@ -85,7 +85,25 @@ public class Tournament extends Competition {
 		System.out.println();
 		System.out.println(this.winnerTournament());
 	}
-	
+	/**
+	 * check if the parameter n is a power of 2
+	 * @param n the number
+	 * @return true if it is the case otherwise false
+	 */
+	public boolean isPowOftwo(int n) {
+		
+		boolean answer = false;
+		while(n >= 2) {
+			if (n%2 == 0) {
+				answer =  true;
+			}
+			else {
+				answer =  false;
+			}
+			n = n/2 ;
+		}
+		return answer;
+	}
 	
 	/**
 	 * return the winner of the tournament 

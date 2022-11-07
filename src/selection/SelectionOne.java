@@ -24,7 +24,7 @@ public class SelectionOne implements Selection {
 		List<Competitor> qualifiedcompet = new ArrayList<>();
 		for (League l : qualified) {
 			l.play();
-			qualifiedcompet.addAll(this.selecTwoBestPlayer(l.getScore()));
+			qualifiedcompet.addAll(this.selectPlayer(l.getScore()));
 			cpt+=1;
 			Competition.displayer.displaymsg("-----------------------------------------");
 			Competition.displayer.displaymsg("ci-dessus, le classement du poule "+ cpt);
@@ -41,12 +41,12 @@ public class SelectionOne implements Selection {
 	 * @param map contains all competitors and their score
 	 * @return a list which contains the two best player of each pools
 	 */
-	public List<Competitor> selecTwoBestPlayer(Map<Competitor, Integer> map) {
+	public List<Competitor> selectPlayer(Map<Competitor, Integer> map) {
 		Set<Competitor> iter = map.keySet();
-		List<Competitor> qualif = new ArrayList<>();
 		Iterator<Competitor> it = iter.iterator();
-		Competitor comp1 = it.next();
-		Competitor comp2 = it.next();
+		Competitor comp1 = it.next();  // take the first player who has the most points
+		Competitor comp2 = it.next();  // take the second player who has the most points 
+		List<Competitor> qualif = new ArrayList<>();
 		qualif.add(comp1);
 		qualif.add(comp2);
 		return qualif;

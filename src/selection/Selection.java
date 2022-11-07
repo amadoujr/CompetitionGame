@@ -12,5 +12,5 @@ public interface Selection {
 	 * @return
 	 */
 	public List<Competitor> getFinalist(List<League> qualified);
-	
+	public List<Competitor> selectPlayer(Map<Competitor, Integer> map);
 }
