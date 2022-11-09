@@ -29,7 +29,7 @@ public class SelectionThree implements Selection {
 			qualifiedcompet.addAll(this.selectPlayer(l.getScore()));
 			cpt+=1;
 			Competition.displayer.displaymsg("-----------------------------------------");
-			Competition.displayer.displaymsg("ci-dessus, le classement du poule "+ cpt);
+			Competition.displayer.displaymsg("ci-dessus, le classement de la poule "+ cpt);
 			Competition.displayer.displaymsg("-----------------------------------------");
 			System.out.println();
 		}

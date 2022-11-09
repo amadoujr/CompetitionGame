@@ -1,10 +1,14 @@
-package competitor; 
+package competitor;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Competitor {
 	
 	// attribute
 	private String name;
 	private boolean qualification;
+	protected int scoreP;
 	
 	/**
 	 * initialize the constructor
@@ -14,6 +18,7 @@ public class Competitor {
 	public Competitor(String name){
 		this.name = name;
 		this.qualification = true ;
+		this.scoreP = 0;
 	}
 	
 	
@@ -25,7 +30,15 @@ public class Competitor {
 	public void setName(String name) {
 		this.name = name;
 	}
-		
+	
+	public void setScoreP(int scoreP) {
+		this.scoreP = scoreP;
+	}
+	
+	public int getScoreP() {
+		return scoreP;
+	}
+	
 	public boolean getQualification() {
 		return this.qualification;
 	}

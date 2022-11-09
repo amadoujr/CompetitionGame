@@ -44,37 +44,37 @@ public class SelectionFive implements Selection {
 	 */
 	public List<Competitor> selectPlayer(Map<Competitor, Integer> map) {
 		List<Integer> score = new ArrayList<>() ;
-		for (Map.Entry<Competitor, Integer> entry : map.entrySet()) {
+		for (Map.Entry<Competitor, Integer> entry : map.entrySet()) {	// retrieving scores from a list
             Integer points = entry.getValue();
             score.add(points);
 		}
-		Collections.sort(score);
+		Collections.sort(score);									// sorting scores in ascending order
 		int n = 0;
 		List<Competitor> qualif = new ArrayList<>();
 		while (n!= 4) {
-			for (Map.Entry<Competitor, Integer> entry : map.entrySet()) {
+			for (Map.Entry<Competitor, Integer> entry : map.entrySet()) {	// check if score competitor is equal to the desired score
 				Competitor c = entry.getKey() ;
 	            Integer points = entry.getValue();
 	            if (n==0) {
-	            	if (points == score.get(score.size()-1)) {
+	            	if (points == score.get(score.size()-1) && ! qualif.contains(c)) {
 	            		qualif.add(c);
 	            		n += 1 ;
 	            	}
 	            }
 	            if (n==1) {
-	            	if (points == score.get(score.size()-2)) {
+	            	if (points == score.get(score.size()-2) && ! qualif.contains(c)) {
 	            		qualif.add(c);
 	            		n += 1 ;
 	            	}
 	            }
 	            if (n==2) {
-	            	if (points == score.get(score.size()-3)) {
+	            	if (points == score.get(score.size()-3) && ! qualif.contains(c)) {
 	            		qualif.add(c);
 	            		n += 1 ;
 	            	}
 	            }
 	            if (n==3) {
-	            	if (points == score.get(score.size()-4)) {
+	            	if (points == score.get(score.size()-4) && ! qualif.contains(c)) {
 	            		qualif.add(c);
 	            		n += 1 ;
 	            	}
