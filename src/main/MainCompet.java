@@ -10,7 +10,10 @@ import competitor.Competitor;
 import match.Match;
 import match.RandomVictoryMatch;
 import partition.PartitionXByStage;
+import selection.SelectionFour;
 import selection.SelectionOne;
+import selection.SelectionThree;
+import selection.SelectionTwo;
 import competition.*;
 
 public class MainCompet {
@@ -55,10 +58,28 @@ public class MainCompet {
 				break;
 				
 			case 3 :
-				compet = new Master(competitors,match,new SelectionOne(),new PartitionXByStage(4));
-				compet.play();
-				break;
+				Scanner scan2 = new Scanner(System.in);
+				System.out.println("Please choose one of those selections : 1-the best 2 of each league  - 2 - 3- the best of each league with repeche - 4");
+				int answer2 = scan2.nextInt();
 				
+				switch(answer2) {
+				case 1 :
+					compet = new Master(competitors,match,new SelectionOne(),new PartitionXByStage(4));
+					compet.play();
+					break;
+				case 2 :
+					compet = new Master(competitors,match,new SelectionTwo(),new PartitionXByStage(4));
+					compet.play();
+					break;
+				case 3 :
+					compet = new Master(competitors,match,new SelectionThree(),new PartitionXByStage(4));
+					compet.play();
+					break;
+				case 4 :
+					compet = new Master(competitors,match,new SelectionFour(),new PartitionXByStage(4));
+					compet.play();
+					break;
+				}
 			case 4:
 				System.exit(0);
 			default:
