@@ -10,10 +10,10 @@ import java.util.Set;
 import competitor.Competitor;
 import competition.*;
 
-public class SelectionTwo implements Selection {
+public class SelectionFive implements Selection {
 
 	/**
-	 * keep only the two last of each pools for the next round
+	 * keep only the first four of each pools for the next round
 	 * the number of competitor must be a power of 2.
 	 * @param qualified contains a list of leagues
 	 * @return list of competitor.
@@ -31,7 +31,7 @@ public class SelectionTwo implements Selection {
 			Competition.displayer.displaymsg("-----------------------------------------");
 			System.out.println();
 		}
-		Competition.displayer.displaymsg("here is the last two competitor of each pool : ");
+		Competition.displayer.displaymsg("here is the first four of each pool : ");
 		System.out.println();
 		System.out.println("\t" + qualifiedcompet);
 		System.out.println();
@@ -40,7 +40,7 @@ public class SelectionTwo implements Selection {
 
 	/**
 	 * @param map contains all competitors and their score
-	 * @return a list which contains the two last player of each pools
+	 * @return a list which contains the first four of each pools
 	 */
 	public List<Competitor> selectPlayer(Map<Competitor, Integer> map) {
 		List<Integer> score = new ArrayList<>() ;
@@ -51,18 +51,30 @@ public class SelectionTwo implements Selection {
 		Collections.sort(score);
 		int n = 0;
 		List<Competitor> qualif = new ArrayList<>();
-		while (n!= 2) {
+		while (n!= 4) {
 			for (Map.Entry<Competitor, Integer> entry : map.entrySet()) {
 				Competitor c = entry.getKey() ;
 	            Integer points = entry.getValue();
 	            if (n==0) {
-	            	if (points == score.get(0)) {
+	            	if (points == score.get(score.size()-1)) {
 	            		qualif.add(c);
 	            		n += 1 ;
 	            	}
 	            }
 	            if (n==1) {
-	            	if (points == score.get(1)) {
+	            	if (points == score.get(score.size()-2)) {
+	            		qualif.add(c);
+	            		n += 1 ;
+	            	}
+	            }
+	            if (n==2) {
+	            	if (points == score.get(score.size()-3)) {
+	            		qualif.add(c);
+	            		n += 1 ;
+	            	}
+	            }
+	            if (n==3) {
+	            	if (points == score.get(score.size()-4)) {
 	            		qualif.add(c);
 	            		n += 1 ;
 	            	}
