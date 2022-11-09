@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import competition.Competition;
+import competition.Master;
 import competition.Tournament;
 import competitor.Competitor;
 import match.Match;
@@ -44,7 +45,10 @@ public abstract class CompetitionTest {
 	public void  playTest() {
 		assertTrue(this.compet.getcompteur() == 0 );
 		this.compet.play();
-		assertTrue(this.compet.getcompteur() == 1 );
+		if (this.compet instanceof Master) {
+			assertTrue(this.compet.getcompteur() == 3 );
+		}
+		else assertTrue(this.compet.getcompteur() == 1 );
 
 		
 	}

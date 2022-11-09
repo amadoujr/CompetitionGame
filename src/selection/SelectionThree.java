@@ -42,7 +42,11 @@ public class SelectionThree implements Selection {
 		System.out.println();
 		return qualifiedcompet;
 	}
-
+	
+	/**
+	 * @param map contains all competitors and their score
+	 * @return a list which contains the  best player of each pool
+	 */
 	@Override
 	public List<Competitor> selectPlayer(Map<Competitor, Integer> map) {
 		// TODO Auto-generated method stub
@@ -54,7 +58,11 @@ public class SelectionThree implements Selection {
 		return qualif;
 		
 	}
-	
+	/**
+	 * 
+	 * add the best_tird to the list for the tournament 
+	 * @param quialified contains all the leagues , the list of the competitors for the tournament 
+	 */
 	public  void repeche(List<League> qualified ,List<Competitor> liste){
 		Competitor best_tird = null;
 		int score = 0 ;

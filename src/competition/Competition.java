@@ -83,7 +83,7 @@ public abstract class Competition {
 		System.out.println();
 		this.ranking(); 
 		this.displayRanking(); // display the ranking of the tournament
-		
+		System.out.println(getcompteur());
 	}
 	
 	/**
