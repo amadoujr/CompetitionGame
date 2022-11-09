@@ -27,7 +27,7 @@ public class SelectionTwo implements Selection {
 			cpt += 1;
 			qualifiedcompet.addAll(this.selectPlayer(l.getScore()));
 			Competition.displayer.displaymsg("-----------------------------------------");
-			Competition.displayer.displaymsg("ci-dessus, le classement du poule "+ cpt);
+			Competition.displayer.displaymsg("ci-dessus, le classement de la poule "+ cpt);
 			Competition.displayer.displaymsg("-----------------------------------------");
 			System.out.println();
 		}
@@ -44,25 +44,25 @@ public class SelectionTwo implements Selection {
 	 */
 	public List<Competitor> selectPlayer(Map<Competitor, Integer> map) {
 		List<Integer> score = new ArrayList<>() ;
-		for (Map.Entry<Competitor, Integer> entry : map.entrySet()) {
+		for (Map.Entry<Competitor, Integer> entry : map.entrySet()) {    // retrieving scores from a list 
             Integer points = entry.getValue();
             score.add(points);
 		}
-		Collections.sort(score);
+		Collections.sort(score);										// sorting scores in ascending order
 		int n = 0;
 		List<Competitor> qualif = new ArrayList<>();
 		while (n!= 2) {
-			for (Map.Entry<Competitor, Integer> entry : map.entrySet()) {
+			for (Map.Entry<Competitor, Integer> entry : map.entrySet()) {   
 				Competitor c = entry.getKey() ;
 	            Integer points = entry.getValue();
 	            if (n==0) {
-	            	if (points == score.get(0)) {
-	            		qualif.add(c);
+	            	if (points == score.get(0)) {  // check if score competitor is equal to the desired score 
+	            		qualif.add(c);				
 	            		n += 1 ;
 	            	}
 	            }
 	            if (n==1) {
-	            	if (points == score.get(1)) {
+	            	if (points == score.get(1) && ! qualif.contains(c) ) {
 	            		qualif.add(c);
 	            		n += 1 ;
 	            	}
