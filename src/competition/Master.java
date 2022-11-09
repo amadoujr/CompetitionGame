@@ -43,7 +43,7 @@ public class Master extends Competition {
 		List<Competitor> qualified = this.selection.getFinalist(leagues);
 		this.tournament = new Tournament(qualified ,this.match);
 		this.tournament.play();
-
+		this.compteur++;
 	}
 	
 	/**

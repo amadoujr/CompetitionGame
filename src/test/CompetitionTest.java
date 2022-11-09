@@ -45,10 +45,7 @@ public abstract class CompetitionTest {
 	public void  playTest() {
 		assertTrue(this.compet.getcompteur() == 0 );
 		this.compet.play();
-		if (this.compet instanceof Master) {
-			assertTrue(this.compet.getcompteur() == 3 );
-		}
-		else assertTrue(this.compet.getcompteur() == 1 );
+		assertTrue(this.compet.getcompteur() == 1 );
 
 		
 	}
