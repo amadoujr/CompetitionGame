@@ -22,6 +22,22 @@ la méthode *play*;
 - Génerer et éxécuter l'archive
 - Génerer les diagrammes UML
 
+## Rendu Livrable 1
+
+## Semaine 1 
+
+Nous avons chacun modifier/corriger les remarques sur notre livrable 1 et nous avons réfléchi à comment implémenter la nouvelle competition Master.
+
+## Semaine 2
+
+Amadou et Hamza ont implémenté Master dans compétition avec toutes les méthodes qui vont avec , Nathan s'est occupé de faire Partition qui
+est la méthode de création des groupes.
+
+## Semaine 3 
+
+Amadou a créer la base de Sélection,a créer une méthode de séléction et s'est occupé de tout le display de Master. 
+Nathan a créer 3 méthodes de sélection et a gérer le rank final de Master notamment la gestion des points.
+Hamza a également créer une méthode de sélection  et s'est occupé de toute la partie test pour Master.
 
 ## HowTo
 
