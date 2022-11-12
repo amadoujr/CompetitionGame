@@ -1,7 +1,6 @@
 package test;
 
 import competitor.Competitor;
-import match.Match;
 import match.RandomVictoryMatch;
 
 class MockMatch extends RandomVictoryMatch {

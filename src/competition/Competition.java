@@ -1,6 +1,5 @@
 package competition;
 import java.util.*;
-
 import competitor.Competitor;
 import display.Display;
 import match.*;
@@ -103,11 +102,13 @@ public abstract class Competition {
 		if (this.match.winnerOfTheGame(c1, c2).equals(c1)) {
 			c2.setQualification(false) ; 
 			this.score.put(c1, this.score.get(c1)+1) ;
+			c1.setScoreP(c1.getScoreP()+1);
 			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");
 		}
 		else {
 			c1.setQualification(false) ;
 			this.score.put(c2, this.score.get(c2)+1) ;
+			c2.setScoreP(c2.getScoreP()+1);
 			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c2 +" win!!");
 		}
 	}
@@ -123,7 +124,15 @@ public abstract class Competition {
 	 * @return ranking of each competitors
 	 */
 	public Map<Competitor,Integer> ranking(){
-		score = MapUtil.sortByDescendingValue(score);
+		if (this instanceof Master ) {
+			for (int i=0 ; i<this.competitors.size(); i++) {
+				this.score.put(this.competitors.get(i), this.competitors.get(i).getScoreP());
+			score = MapUtil.sortByDescendingValue(score);
+			}
+		}
+		else {
+			score = MapUtil.sortByDescendingValue(score);
+		}
 		return score;
 	}
 	

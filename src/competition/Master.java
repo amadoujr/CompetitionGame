@@ -5,7 +5,6 @@ import java.util.List;
 import selection.*;
 import competitor.Competitor;
 import match.Match;
-import match.RandomVictoryMatch;
 import partition.Partition;
 
 public class Master extends Competition {
@@ -36,13 +35,14 @@ public class Master extends Competition {
 
 	protected void play(List<Competitor> competitors) {
 		// TODO Auto-generated method stub
+		
 		List<List<Competitor>> pools = new ArrayList<>();
 		pools = this.partition.doPartition(competitors);
 		this.launchpools(pools);
 		List<Competitor> qualified = this.selection.getFinalist(leagues);
 		this.tournament = new Tournament(qualified ,this.match);
 		this.tournament.play();
-
+		this.compteur++;
 	}
 	
 	/**

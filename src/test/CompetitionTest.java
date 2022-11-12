@@ -4,15 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import competition.Competition;
-import competition.Tournament;
 import competitor.Competitor;
 import match.Match;
-import match.RandomVictoryMatch;
 
 public abstract class CompetitionTest {
 	
@@ -28,7 +24,7 @@ public abstract class CompetitionTest {
 	protected abstract Competition createCompet();
 
 	
-	/* on teste la methode play() de competition */
+	/* testing methods play of  competition */
 	@Test
 	public void PlaytestCompet() {
 		/*Competition tour = new Tournament (this.competitors, this.m1);*/
@@ -39,7 +35,7 @@ public abstract class CompetitionTest {
 		assertTrue(mock.getOccurence()== 1);
 		
 	}
-	/* on test les methode play(List) de league  et tournois */
+	/* Testing methods play(List) of leagues and tournament */
 	@Test
 	public void  playTest() {
 		assertTrue(this.compet.getcompteur() == 0 );

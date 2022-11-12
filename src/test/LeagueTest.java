@@ -1,35 +1,20 @@
 package test;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 import java.util.*;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import competition.Competition;
 import competition.League;
 import competitor.Competitor;
 import match.Match;
-import match.RandomVictoryMatch;
 
 class LeagueTest extends CompetitionTest {
 	
 
-
-	 
-	@Test
-	/*public void PlayMatchTest(){
-		
-		int nb_points  = 0;
-		assertEquals(c1.getScore(), nb_points);
-		league.play(competitors);
-		System.out.println(c1.getScore());
-		assertEquals(c1.getScore() , 3);  // all competitors have the same points due to the use of a MockClass
-		
-	}*/
 
 	@Override
 	protected Competition createCompet() {
