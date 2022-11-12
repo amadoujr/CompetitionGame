@@ -59,7 +59,7 @@ class TournamentTest extends CompetitionTest {
 
 
 
-	@Test 
+	/*@Test 
 	public void playTournamentANDwinnerTournamentTestOK() { 
 		Competitor c1 = new Competitor("madrid");  Competitor c2 = new Competitor("barcelone");
 		Competitor c3 = new Competitor("valence"); Competitor c4 = new Competitor("séville");
@@ -77,7 +77,7 @@ class TournamentTest extends CompetitionTest {
 	    assertTrue(this.tournament.winnerTournament().contains("Le vainqueur du tournoi est " + this.tournament.getWinner() )); 
 	    assertTrue(this.tournament.getScore().get(c1) == 3);
 	    System.out.println(this.tournament.getWinner());
-	}
+	}*/
 
 	@Override
 	protected Competition createCompet() {

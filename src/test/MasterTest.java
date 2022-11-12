@@ -36,7 +36,7 @@ class MasterTest extends CompetitionTest {
 		c.add(c2);
 		c.add(c3);
 		c.add(c4);
-		Match match = new RandomVictoryMatch();
+		Match match = new MockMatch();
 		
 		Selection selection = new SelectionThree();
 		Partition partition = new PartitionXByStage(2);
@@ -47,5 +47,26 @@ class MasterTest extends CompetitionTest {
 	@Test
 	public void playTest() {
 		super.playTest();
+	}
+	@Test
+	public void PlayTest() {
+		List<Competitor> c = new ArrayList<Competitor>();
+		Competitor c1 = new Competitor("jean");
+		Competitor c2 = new Competitor("pierre");
+		Competitor c3 = new Competitor("jonas");
+		Competitor c4 = new Competitor("jacob");
+
+
+		c.add(c1);
+		c.add(c2);
+		c.add(c3);
+		c.add(c4);
+		Match match = new MockMatch();
+		
+		Selection selection = new SelectionThree();
+		Partition partition = new PartitionXByStage(2);
+		Master m = new Master(c,match,selection,partition);
+		m.play();
+		assertTrue(m.getScore().get(c1)== 2);
 	}
 }
