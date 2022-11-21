@@ -3,11 +3,13 @@ import java.util.*;
 import competitor.Competitor;
 import display.Display;
 import match.*;
+import observer.Observer;
+import observer.CompetitionObservable;
 
 
-public abstract class Competition {
+public abstract class Competition implements CompetitionObservable {
 	
-	// Attribute
+	/*Lists of attributes necessary for the competition */
 
 	protected Match match;
 	protected final List<Competitor> competitors;
@@ -15,15 +17,20 @@ public abstract class Competition {
 	public static final Display displayer = new Display();
 	protected int compteur;
 	protected Map<Competitor,Integer> score;
+	protected List<Observer> observers;
+	protected Map<Competitor,Integer> odds;
+	protected String state;
+	
 	/**
 	 * initialize the constructor
 	 */
-	
 	public Competition(List<Competitor> competitors, Match m1) {
 		this.match = m1;
 		this.competitors = competitors;
 		this.compteur=0;
 		this.score = new HashMap<>();
+		this.observers = new ArrayList<>();
+		this.odds= new HashMap<>();
 		this.initializeScore();
 	}
 	
@@ -104,12 +111,18 @@ public abstract class Competition {
 			this.score.put(c1, this.score.get(c1)+1) ;
 			c1.setScoreP(c1.getScoreP()+1);
 			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");
+			Competition.displayer.displaymsg(this.state + c1 + " won the match over " + c2);
 		}
 		else {
 			c1.setQualification(false) ;
 			this.score.put(c2, this.score.get(c2)+1) ;
 			c2.setScoreP(c2.getScoreP()+1);
+			System.out.println();
 			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c2 +" win!!");
+			Competition.displayer.displaymsg(this.state + c2 + " won the match over " + c1);
+			Competition.displayer.displaymsg(this.state + "Oooh, what a sensational victory for" + c2);
+			//Competition.displayer.displaymsg(this.state + c2 + " won the match over " + c1);
+
 		}
 	}
 	
@@ -146,5 +159,43 @@ public abstract class Competition {
 			Competition.displayer.displaymsg(entry.getKey() + " - "+ entry.getValue());
 		}
 	}
+	
+	/**
+	 * this method add the observer to the competition and he will be able to do some kind of thing
+	 * that we will define
+	 * @param observer the observer to add
+	 */
+	public void addObservers (Observer observer) {
+		this.observers.add(observer);
+	};
+	/**
+	 * the method remove the observer from the competition
+	 * @param observer the observer to remove
+	 */
+	public void removeObersver (Observer observer) {
+		this.observers.remove(observer);
+	};
+	/**
+	 * this method notify observers about changes happens on the competition
+	 */
+	public void notifyObserver() {
+		for (Observer observer : this.observers) {
+			observer.update(this);
+		}
+	}
+	
+	public void setState() {
+		this.notifyObserver();
+	}
+	
+	public String getState() {
+		return this.state;
+	}
+	
+	public void state(String state) {
+		this.state = state;
+	}
+	
+		
 	
 }

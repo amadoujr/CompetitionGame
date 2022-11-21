@@ -9,6 +9,8 @@ import competition.Tournament;
 import competitor.Competitor;
 import match.Match;
 import match.RandomVictoryMatch;
+import observer.BeinSport;
+import observer.Journalist;
 import partition.PartitionXByStage;
 import selection.SelectionFive;
 import selection.SelectionFour;
@@ -21,10 +23,27 @@ public class MainCompet {
 
 	public static void main(String[] args) {
 		
+		@SuppressWarnings("resource")
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Please choose number of competitors : ");
+		int res = scan.nextInt();
+		List<Competitor> competitors = new ArrayList<>();
+		int i = 0;
+		for (i = 0 ; i< res ; i++) {
+			competitors.add(new Competitor("competitor "+i));    // Adding competitors to the competition
+		}
+		Match match = new RandomVictoryMatch();
+		Competition compet = new League(competitors,match);
+		compet.addObservers(new Journalist());
+		compet.addObservers(new BeinSport());
+		compet.setState();
+		
+		
 		
 		/**
-		 * allow user to enter numbers of competitors 
-		 */ 
+		 * allow user to enter numbers of competitors  
+		 
+
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Please choose number of competitors : ");
@@ -95,8 +114,7 @@ public class MainCompet {
 		           System.out.println("bad choose. Try it again");
 		           break;
 		}
-		
-		
+			*/
 	}
 
 }

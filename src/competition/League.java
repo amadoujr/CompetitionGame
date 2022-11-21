@@ -6,14 +6,7 @@ import competitor.Competitor;
 import match.*;
 
 public class League extends Competition {
-	
-	/**
-	 *  match correspond to the type of match (RandomVictoryMatch in our case ) that competitors will play
-	 *  finished  : help us to know if the leagues is over or not
-	 */
-	
-	
-
+		
 	/**
 	 * Initialize the constructor
 	 * @param competitors a list contains all competitors
