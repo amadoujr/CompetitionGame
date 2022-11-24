@@ -32,9 +32,12 @@ public class Master extends Competition {
 		this.selection = selection;
 		this.partition = partition;
 	}
-
+	/**
+	 * this methods generate pools and selection qualified competitor for the second phase in
+	 * order to make them play the tournament
+	 * @param competitors
+	 */
 	protected void play(List<Competitor> competitors) {
-		// TODO Auto-generated method stub
 		
 		List<List<Competitor>> pools = new ArrayList<>();
 		pools = this.partition.doPartition(competitors);
@@ -42,16 +45,18 @@ public class Master extends Competition {
 		List<Competitor> qualified = this.selection.getFinalist(leagues);
 		this.tournament = new Tournament(qualified ,this.match);
 		this.tournament.play();
-		this.compteur++;
 	}
 	
 	/**
-	 * create pools
-	 * @param pools
+	 * create pools for the leagues and play them by the way
+	 * @param pools correspond to the pools
 	 */
 	public void launchpools(List<List<Competitor>> pools) {
 		for(List<Competitor> c :pools) {
 			 this.leagues.add(new League(c,this.match));
+		}
+		for (League l : this.leagues) {
+			l.play();                     // play each pools before the selection
 		}
 	}
 	

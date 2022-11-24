@@ -12,12 +12,10 @@ public class BookMakers implements Observer {
 	
 	public BookMakers() {
 		this.odds = new HashMap<>();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void update(CompetitionObservable observable) {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -12,37 +12,22 @@ import match.RandomVictoryMatch;
 import observer.BeinSport;
 import observer.Journalist;
 import partition.PartitionXByStage;
-import selection.SelectionFive;
-import selection.SelectionFour;
-import selection.SelectionOne;
-import selection.SelectionThree;
-import selection.SelectionTwo;
+import selection.SelectBestFourCompetitor;
+import selection.SelectFirstLastCompetitor;
+import selection.SelecTwoBestCompetitor;
+import selection.SelectBestCompetitor;
+import selection.SelecLastCompetitor;
 import competition.*;
 
 public class MainCompet {
 
 	public static void main(String[] args) {
 		
-		@SuppressWarnings("resource")
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Please choose number of competitors : ");
-		int res = scan.nextInt();
-		List<Competitor> competitors = new ArrayList<>();
-		int i = 0;
-		for (i = 0 ; i< res ; i++) {
-			competitors.add(new Competitor("competitor "+i));    // Adding competitors to the competition
-		}
-		Match match = new RandomVictoryMatch();
-		Competition compet = new League(competitors,match);
-		compet.addObservers(new Journalist());
-		compet.addObservers(new BeinSport());
-		compet.setState();
-		
-		
 		
 		/**
 		 * allow user to enter numbers of competitors  
-		 
+		 */
+
 
 		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
@@ -88,23 +73,23 @@ public class MainCompet {
 				
 				switch(answer2) {
 				case 1 :
-					compet = new Master(competitors,match,new SelectionOne(),new PartitionXByStage(nbpools));
+					compet = new Master(competitors,match,new SelecTwoBestCompetitor(),new PartitionXByStage(nbpools));
 					compet.play();
 					break;
 				case 2 :
-					compet = new Master(competitors,match,new SelectionTwo(),new PartitionXByStage(nbpools));
+					compet = new Master(competitors,match,new SelecLastCompetitor(),new PartitionXByStage(nbpools));
 					compet.play();
 					break;
 				case 3 :
-					compet = new Master(competitors,match,new SelectionThree(),new PartitionXByStage(nbpools));
+					compet = new Master(competitors,match,new SelectBestCompetitor(),new PartitionXByStage(nbpools));
 					compet.play();
 					break;
 				case 4 :
-					compet = new Master(competitors,match,new SelectionFour(),new PartitionXByStage(nbpools));
+					compet = new Master(competitors,match,new SelectFirstLastCompetitor(),new PartitionXByStage(nbpools));
 					compet.play();
 					break;
 				case 5 :
-					compet = new Master(competitors,match,new SelectionFive(),new PartitionXByStage(nbpools));
+					compet = new Master(competitors,match,new SelectBestFourCompetitor(),new PartitionXByStage(nbpools));
 					compet.play();
 					break;
 				}
@@ -114,7 +99,6 @@ public class MainCompet {
 		           System.out.println("bad choose. Try it again");
 		           break;
 		}
-			*/
 	}
 
 }

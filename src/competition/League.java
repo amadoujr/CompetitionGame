@@ -30,7 +30,6 @@ public class League extends Competition {
 				}
 			}
 		}
-		this.compteur++;  /*used for testing Cmpetitions play()*/
 	}
 	
 	

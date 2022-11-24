@@ -10,7 +10,7 @@ import competition.Competition;
 import competition.League;
 import competitor.Competitor;
 
-public class SelectionThree implements Selection {
+public class SelectBestCompetitor implements Selection {
 	
 	
 	/**
@@ -21,16 +21,9 @@ public class SelectionThree implements Selection {
 	 */
 	@Override
 	public List<Competitor> getFinalist(List<League> qualified) {
-		// TODO Auto-generated method stub
-		int cpt =0;
 		List<Competitor> qualifiedcompet = new ArrayList<>();
 		for (League l : qualified) {
-			l.play();
 			qualifiedcompet.addAll(this.selectPlayer(l.getScore()));
-			cpt+=1;
-			Competition.displayer.displaymsg("-----------------------------------------");
-			Competition.displayer.displaymsg("ci-dessus, le classement de la poule "+ cpt);
-			Competition.displayer.displaymsg("-----------------------------------------");
 			System.out.println();
 		}
 		if (qualifiedcompet.size()%2 !=0) {
@@ -49,7 +42,6 @@ public class SelectionThree implements Selection {
 	 */
 	@Override
 	public List<Competitor> selectPlayer(Map<Competitor, Integer> map) {
-		// TODO Auto-generated method stub
 		Set<Competitor> iter = map.keySet();
 		Iterator<Competitor> it = iter.iterator();
 		Competitor comp1 = it.next();  // take the first player who has the most points
@@ -59,7 +51,6 @@ public class SelectionThree implements Selection {
 		
 	}
 	/**
-	 * 
 	 * add the best_tird to the list for the tournament 
 	 * @param quialified contains all the leagues , the list of the competitors for the tournament 
 	 */

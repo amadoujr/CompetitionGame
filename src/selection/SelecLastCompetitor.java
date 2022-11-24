@@ -2,15 +2,12 @@ package selection;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import competitor.Competitor;
 import competition.*;
 
-public class SelectionTwo implements Selection {
+public class SelecLastCompetitor implements Selection {
 
 	/**
 	 * keep only the two last of each pools for the next round
@@ -19,16 +16,9 @@ public class SelectionTwo implements Selection {
 	 * @return list of competitor.
 	 */
 	public List<Competitor> getFinalist(List<League> qualified) {
-		// TODO Auto-generated method stub
-		int cpt = 0;
 		List<Competitor> qualifiedcompet = new ArrayList<>();
 		for (League l : qualified) {
-			l.play();
-			cpt += 1;
 			qualifiedcompet.addAll(this.selectPlayer(l.getScore()));
-			Competition.displayer.displaymsg("-----------------------------------------");
-			Competition.displayer.displaymsg("ci-dessus, le classement de la poule "+ cpt);
-			Competition.displayer.displaymsg("-----------------------------------------");
 			System.out.println();
 		}
 		Competition.displayer.displaymsg("here is the last two competitor of each pool : ");

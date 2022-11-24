@@ -15,7 +15,6 @@ public abstract class Competition implements CompetitionObservable {
 	protected final List<Competitor> competitors;
 	protected boolean finished ;
 	public static final Display displayer = new Display();
-	protected int compteur;
 	protected Map<Competitor,Integer> score;
 	protected List<Observer> observers;
 	protected Map<Competitor,Integer> odds;
@@ -27,7 +26,6 @@ public abstract class Competition implements CompetitionObservable {
 	public Competition(List<Competitor> competitors, Match m1) {
 		this.match = m1;
 		this.competitors = competitors;
-		this.compteur=0;
 		this.score = new HashMap<>();
 		this.observers = new ArrayList<>();
 		this.odds= new HashMap<>();
@@ -55,13 +53,7 @@ public abstract class Competition implements CompetitionObservable {
 	public void setScore(Map<Competitor, Integer> score) {
 		this.score = score;
 	}
-	/**
-	 * Used Just for the JUnit test
-	 * @return 
-	 */
-	public int getcompteur() {
-		return this.compteur;
-	}
+	
 	
 	/**
 	 * reset the score of competitors to zero before the next competition
@@ -75,7 +67,6 @@ public abstract class Competition implements CompetitionObservable {
 	/**
 	 * this methods runs a competition till the end
 	 */
-	 
 	public void play() {
 		while(!this.isFinished()) {   // end of the game reached ?
 			try {
@@ -89,7 +80,7 @@ public abstract class Competition implements CompetitionObservable {
 		System.out.println();
 		this.ranking(); 
 		this.displayRanking(); // display the ranking of the tournament
-		
+		System.out.println();
 	}
 	
 	/**
@@ -111,18 +102,13 @@ public abstract class Competition implements CompetitionObservable {
 			this.score.put(c1, this.score.get(c1)+1) ;
 			c1.setScoreP(c1.getScoreP()+1);
 			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");
-			Competition.displayer.displaymsg(this.state + c1 + " won the match over " + c2);
 		}
 		else {
 			c1.setQualification(false) ;
 			this.score.put(c2, this.score.get(c2)+1) ;
 			c2.setScoreP(c2.getScoreP()+1);
-			System.out.println();
 			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c2 +" win!!");
-			Competition.displayer.displaymsg(this.state + c2 + " won the match over " + c1);
-			Competition.displayer.displaymsg(this.state + "Oooh, what a sensational victory for" + c2);
-			//Competition.displayer.displaymsg(this.state + c2 + " won the match over " + c1);
-
+			
 		}
 	}
 	

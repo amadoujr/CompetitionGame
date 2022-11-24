@@ -9,7 +9,7 @@ import java.util.Set;
 import competition.*;
 import competitor.Competitor;
 
-public class SelectionOne implements Selection {
+public class SelecTwoBestCompetitor implements Selection {
 
 
 	/**
@@ -19,19 +19,12 @@ public class SelectionOne implements Selection {
 	 * @return list of competitor.
 	 */
 	public List<Competitor> getFinalist(List<League> qualified) {
-		// TODO Auto-generated method stub
-		int cpt = 0;
 		List<Competitor> qualifiedcompet = new ArrayList<>();
 		for (League l : qualified) {
-			l.play();
 			qualifiedcompet.addAll(this.selectPlayer(l.getScore()));
-			cpt+=1;
-			Competition.displayer.displaymsg("-----------------------------------------");
-			Competition.displayer.displaymsg("ci-dessus, le classement de la poule "+ cpt);
-			Competition.displayer.displaymsg("-----------------------------------------");
 			System.out.println();
 		}
-		Competition.displayer.displaymsg("here is the best two competitor of each pool : ");
+		Competition.displayer.displaymsg("Here is the best two competitor of each pool : ");
 		System.out.println();
 		System.out.println("\t" + qualifiedcompet);
 		System.out.println();
