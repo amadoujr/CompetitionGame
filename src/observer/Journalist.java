@@ -15,4 +15,10 @@ public class Journalist implements Observer {
 		 
 	}
 
+	@Override
+	public void react_to_match() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

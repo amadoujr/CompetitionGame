@@ -14,4 +14,10 @@ public class BeinSport implements Observer {
 		System.out.println("ci-dessus le classement finale de la competition");
 		 
 	}
+
+	@Override
+	public void react_to_match() {
+		// TODO Auto-generated method stub
+		
+	}
 }
