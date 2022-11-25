@@ -7,7 +7,7 @@ import observer.Observer;
 import observer.CompetitionObservable;
 
 
-public abstract class Competition implements CompetitionObservable {
+public abstract class Competition  {
 	
 	/*Lists of attributes necessary for the competition */
 
@@ -163,14 +163,9 @@ public abstract class Competition implements CompetitionObservable {
 	/**
 	 * this method notify observers about changes happens on the competition
 	 */
-	public void notifyObserver() {
-		for (Observer observer : this.observers) {
-			observer.update(this);
-		}
-	}
+	
 	
 	public void setState() {
-		this.notifyObserver();
 	}
 	
 	public String getState() {
