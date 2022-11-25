@@ -39,8 +39,7 @@ public abstract class Competition implements CompetitionObservable {
 	public List<Competitor>getCompetitors() { 
 		return this.competitors ;
 	}
-	/**
-	 * 
+	/** 
 	 * @return a map which contains names and scores of each competitors
 	 */
 	public Map<Competitor, Integer> getScore() {
@@ -96,7 +95,7 @@ public abstract class Competition implements CompetitionObservable {
 	 * @param c1 the first competitor
 	 * @param c2 the second competitor
 	 */
-	protected void playMatch(Competitor c1, Competitor c2) {
+	public void playMatch(Competitor c1, Competitor c2) {
 		if (this.match.winnerOfTheGame(c1, c2).equals(c1)) {
 			c2.setQualification(false) ; 
 			this.score.put(c1, this.score.get(c1)+1) ;

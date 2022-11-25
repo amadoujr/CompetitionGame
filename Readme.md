@@ -7,37 +7,28 @@
 
 # [Le sujet] (http://www.fil.univ-lille.fr/~quinton/coo/projet/competitions.pdf)
 
-# Livrables
+# Elements de Conception
 
-## Semaine 1
 
-Durant cette semaine, on s'était fixé comme objectifs de : réaliser les deux
-classes suivantes : *League* && *Tournament* et les *Tests Unitaires* de chaque classe.  
-- Je (Amadou Barro) me suis occupé de coder la classe **League** et de tester
-la méthode *play*;
-- Nathan s'est chargé de coder la classe **Tournament** et de la tester
+##### Compte rendu Livrable 1
 
-## Semaine 2
-- Nous avons finaliser les tests
-- Génerer et éxécuter l'archive
-- Génerer les diagrammes UML
+Toutes les compétitions héritent de la classe abstraite Competition et ne redefinissent qu'une seule méthode abstraite qui est play(List<Competitor>).Cette méthode joue un rôle important car elle permet à toutes les classes qui héritent de compettions de préciser la modalité de déroulement de sa competition.
+Etant donné que c'est la seule méthode qui différencie les classes filles , nous sommes à la présence d'une **Template method**.
+Nous avons aussi ajouter un Displayer pour nous permettre d'afficher toutes les actions effectuées : le classement , les gagnants d'un match.
 
-## Rendu Livrable 1
 
-## Semaine 1 
 
-Nous avons chacun modifier/corriger les remarques sur notre livrable 1 et nous avons réfléchi à comment implémenter la nouvelle competition Master.
+##### Compte rendu Livrable 2
 
-## Semaine 2
+Dans cette nouvelle version, nous devons ajouter une nouvelle type de compétition appelé **Master**. Cette compétitiion se joue en deux phases:
+- Une phase de poule
+- Une phase finale.
 
-Amadou et Hamza ont implémenté Master dans compétition avec toutes les méthodes qui vont avec , Nathan s'est occupé de faire Partition qui
-est la méthode de création des groupes.
+la difficulté consisté à trouver comment sélectionner le nomnbre de compétiteurs puvant accéder à la phase finale tout en respectant les principes **SOLID**. Pour ce faire nous avons utilisé le *Design Pattern Strategy*, De cette maniére nous pourrons créer plusieurs méthodes de Selection et de Partitionnement sans devoir effectuer beaucoup de modifications.
 
-## Semaine 3 
 
-Amadou a créer la base de Sélection,a créer une méthode de séléction et s'est occupé de tout le display de Master. 
-Nathan a créer 3 méthodes de sélection et a gérer le rank final de Master notamment la gestion des points.
-Hamza a également créer une méthode de sélection  et s'est occupé de toute la partie test pour Master.
+
+
 
 ## HowTo
 
@@ -49,12 +40,12 @@ Pour éxécuter ces commandes , se placer dans le repertoir *l3s5-projet-2023.
 
 **génération de la documentation :**
 
--  javadoc -classpath src -d docs -subpackages competition selection 
-
+-  javadoc -classpath src -d docs -subpackages competition
+selection 
 
 **compilation des tests :**
 
-- javac -classpath test4poo.jar test/*.java 
+- javac -classpath test4poo.jar tests/*.java 
 
 **Exécution des tests :**
 
@@ -68,21 +59,13 @@ Pour éxécuter ces commandes , se placer dans le repertoir *l3s5-projet-2023.
 
 - java -jar compet.jar 
 
-## Diagramme UML verion 1
-
-![image](UML/version1/competition.png)
-![image](UML/version1/competitor.png)
-![image](UML/version1/match.png)
-![image](UML/version1/display.png)
-![image](UML/version1/test.png)
-
-
 
 ## Diagramme UML version 2 
-
 
 ![image](UML/version2/competition.png)
 ![image](UML/version2/competitor.png)
 ![image](UML/version2/match.png)
 ![image](UML/version2/display.png)
+![image](UML/version2/selection.png)
 ![image](UML/version2/test.png)
+

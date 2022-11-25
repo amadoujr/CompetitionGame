@@ -1,9 +1,5 @@
-package test;
-
 import static org.junit.Assert.assertTrue;
-
 import org.junit.jupiter.api.Test;
-
 import competition.Competition;
 import competition.NotRowofTwoException;
 import competition.Tournament;
@@ -15,9 +11,21 @@ class TournamentTest extends CompetitionTest {
 	
 	private Tournament tournament;
 	
+	@Override
+	protected Competition createCompet() {
+		List<Competitor> c = new ArrayList<Competitor>();
+		int i = 0;
+		for (i = 0 ; i < 4 ; i++) {
+			c.add(new Competitor("competitor "+i));    // Adding competitors to the competition
+		}
+		Match match = new MockMatch();
+		return new Tournament(c, match);
+		}
+	
 	/**
 	 * test proper to tournament
 	 */
+	
 	@Test 
 	public void playTournamentANDwinnerTournamentTestOK() { 
 		List<Competitor> competitors = new ArrayList<>();
@@ -31,40 +39,35 @@ class TournamentTest extends CompetitionTest {
 	    try {
 			this.tournament.play(competitors);
 		} catch (NotRowofTwoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    
 	    assertTrue(this.tournament.getQualify().size() == 1);
 	    assertTrue(this.tournament.getScore().get(c1) == 2);
 	}
-
-	@Override
-	protected Competition createCompet() {
-		List<Competitor> c = new ArrayList<Competitor>();
-		Competitor c1 = new Competitor("jean");
-		Competitor c2 = new Competitor("pierre");
-		Competitor c3 = new Competitor("jonas");
-		Competitor c4 = new Competitor("jacob");
-
-
-		c.add(c1);
-		c.add(c2);
-		c.add(c3);
-		c.add(c4);
-		Match match = new MockMatch();
-		return new Tournament(c, match);
-		} 
 	
+	/**
+	 * doesn't function due to the asserthrows ... 
+	  
 	@Test
-	public void playTest() {
-		super.playTest();
-		
-	} 
+	public void playTournamentWithNotPowOfTwo() {
+		List<Competitor> competitors = new ArrayList<>();
+		int i = 0;
+		for (i = 0 ; i < 3 ; i++) {
+			competitors.add(new Competitor("competitor "+i));    // Adding competitors to the competition
+		}
+		Match m = new MockMatch();
+		this.tournament = new Tournament(competitors,m);
+		assertThrows(NotRowofTwoException.class,()->{
+			this.tournament.play(); 
+			});
+	}
+	*/
+	
+	
 	@Test
 	public void rankingTest() {
 		System.out.println("-----------");
-		System.out.println(this.compet.ranking());
 		super.rankingTest();
 		Competitor c1 = compet.getCompetitors().get(0);
 		System.out.println(c1);
