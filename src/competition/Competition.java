@@ -4,10 +4,9 @@ import competitor.Competitor;
 import display.Display;
 import match.*;
 import observer.Observer;
-import observer.CompetitionObservable;
 
 
-public abstract class Competition  {
+public abstract class Competition {
 	
 	/*Lists of attributes necessary for the competition */
 
@@ -17,6 +16,7 @@ public abstract class Competition  {
 	public static final Display displayer = new Display();
 	protected Map<Competitor,Integer> score;
 	protected List<Observer> observers;
+	
 	protected Map<Competitor,Integer> odds;
 	protected String state;
 	
@@ -101,13 +101,17 @@ public abstract class Competition  {
 			this.score.put(c1, this.score.get(c1)+1) ;
 			c1.setScoreP(c1.getScoreP()+1);
 			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");
+			notifyObserver(c1,c2);
+			System.out.println("hello");
+			
 		}
 		else {
 			c1.setQualification(false) ;
 			this.score.put(c2, this.score.get(c2)+1) ;
 			c2.setScoreP(c2.getScoreP()+1);
 			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c2 +" win!!");
-			
+			notifyObserver(c2,c1);
+			System.out.println("hello");
 		}
 	}
 	
@@ -164,17 +168,13 @@ public abstract class Competition  {
 	 * this method notify observers about changes happens on the competition
 	 */
 	
-	
-	public void setState() {
+
+	public void notifyObserver(Competitor c1,Competitor c2) {
+		for (Observer o : this.observers) {
+			o.react_to_match( c1, c2);
+		}
 	}
-	
-	public String getState() {
-		return this.state;
-	}
-	
-	public void state(String state) {
-		this.state = state;
-	}
+
 	
 		
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import selection.*;
 import competitor.Competitor;
 import match.Match;
+import observer.Canal;
 import partition.Partition;
 
 public class Master extends Competition {

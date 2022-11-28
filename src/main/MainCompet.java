@@ -9,8 +9,9 @@ import competition.Tournament;
 import competitor.Competitor;
 import match.Match;
 import match.RandomVictoryMatch;
-import observer.BeinSport;
-import observer.Journalist;
+
+import observer.BookMakers;
+import observer.Canal;
 import partition.PartitionXByStage;
 import selection.SelectBestFourCompetitor;
 import selection.SelectFirstLastCompetitor;
@@ -38,9 +39,10 @@ public class MainCompet {
 		List<Competitor> competitors = new ArrayList<>();
 		int i = 0;
 		for (i = 0 ; i< res ; i++) {
-			competitors.add(new Competitor("competitor "+i));    // Adding competitors to the competition
+			competitors.add(new Competitor("competitor "+i,i));    // Adding competitors to the competition
 		}
 		Match match = new RandomVictoryMatch();
+		
 		Competition compet ;
 		@SuppressWarnings("resource")
 		Scanner scan1 = new Scanner(System.in);
@@ -54,11 +56,17 @@ public class MainCompet {
 		switch(answer) {
 			case 1 :  
 				compet = new League(competitors , match);
+				compet.addObservers(new Canal());
+				compet.addObservers(new BookMakers());
+				/*compet.removeObersver(c1);*/
 				compet.play();
 				break;
 				
 			case 2 :
+				
 				compet = new Tournament(competitors , match);
+				compet.addObservers(new Canal());
+				compet.addObservers(new BookMakers());
 				compet.play();
 				break;
 				
@@ -100,5 +108,6 @@ public class MainCompet {
 		           break;
 		}
 	}
+	
 
 }

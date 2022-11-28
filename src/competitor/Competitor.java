@@ -5,17 +5,22 @@ public class Competitor {
 	// attribute
 	private String name;
 	private boolean qualification;
-	protected int scoreP;
+	private  int scoreP;
+	private int odd;
 	
+	
+
+
 	/**
 	 * initialize the constructor
 	 * @param name name of the competitor
 	 * @param score score he obtains after a match
 	 */
-	public Competitor(String name){
+	public Competitor(String name,int cote){
 		this.name = name;
 		this.qualification = true ;
 		this.scoreP = 0;
+		this.odd =cote ;
 	}
 	
 	
@@ -47,6 +52,16 @@ public class Competitor {
 	@Override
 	public String toString() {
 		return name ; 
+	}
+	
+	
+	public int getOdd() {
+		return odd;
+	}
+
+
+	public void setOdd(int odd) {
+		this.odd = odd;
 	}
 	
 	
