@@ -32,6 +32,8 @@ public abstract class Competition {
 		this.initializeScore();
 	}
 	
+	
+
 	/**
 	 * 
 	 * @return the list of competitors
@@ -102,7 +104,7 @@ public abstract class Competition {
 			c1.setScoreP(c1.getScoreP()+1);
 			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c1 +" win!!");
 			notifyObserver(c1,c2);
-			System.out.println("hello");
+			System.out.println();
 			
 		}
 		else {
@@ -111,7 +113,7 @@ public abstract class Competition {
 			c2.setScoreP(c2.getScoreP()+1);
 			Competition.displayer.displaymsg(c1 +" vs "+ c2 + " --> " + c2 +" win!!");
 			notifyObserver(c2,c1);
-			System.out.println("hello");
+			System.out.println();
 		}
 	}
 	
@@ -161,7 +163,7 @@ public abstract class Competition {
 	 * the method remove the observer from the competition
 	 * @param observer the observer to remove
 	 */
-	public void removeObersver (Observer observer) {
+	public void removeObserver (Observer observer) {
 		this.observers.remove(observer);
 	};
 	/**
@@ -173,6 +175,14 @@ public abstract class Competition {
 		for (Observer o : this.observers) {
 			o.react_to_match( c1, c2);
 		}
+	}
+	
+	public List<Observer> getObservers() {
+		return observers;
+	}
+
+	public void setObservers(List<Observer> observers) {
+		this.observers = observers;
 	}
 
 	

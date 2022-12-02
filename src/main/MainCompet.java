@@ -58,6 +58,7 @@ public class MainCompet {
 				compet = new League(competitors , match);
 				compet.addObservers(new Canal());
 				compet.addObservers(new BookMakers());
+				
 				/*compet.removeObersver(c1);*/
 				compet.play();
 				break;
@@ -82,6 +83,8 @@ public class MainCompet {
 				switch(answer2) {
 				case 1 :
 					compet = new Master(competitors,match,new SelecTwoBestCompetitor(),new PartitionXByStage(nbpools));
+					compet.addObservers(new Canal());
+					compet.addObservers(new BookMakers());
 					compet.play();
 					break;
 				case 2 :
