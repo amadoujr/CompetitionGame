@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Iterator;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,10 +10,14 @@ import competitor.Competitor;
 public abstract class CompetitionTest {
 	
 	protected Competition compet;
+	protected Match mockMO ;
+	protected Match mockCO ;
 
 	@BeforeEach
 	void initialisation() {
 		this.compet = this.createCompet();
+		this.mockMO = new MockMatchObserver();
+		this.mockCO = new MockCompetitionObserver();
 	}
 	
 	/**
@@ -25,7 +30,7 @@ public abstract class CompetitionTest {
 	/**
 	 *  testing methods playMatch of competition  
 	 */
-	@Test
+	@Testc
 	public void PlayMatchTestCompetition() {
 		
 		Set <Competitor> c = this.compet.getScore().keySet();
@@ -44,6 +49,20 @@ public abstract class CompetitionTest {
 		this.compet.play();
 			
 	}
+	
+	@Test
+	public void observersCompetitionTest() {
+		this.mockMO.setN(0) ;
+		this.mockCO.setN(0) ;
+		int total = 0;
+		this.compet.play();
+		for(Competitor c : this.compet.getCompetitors()) {
+			total = total + this.compet.ranking().get(c);
+		}
+		assertTrue(total ==this.mockMO.getN());
+		assertTrue(this.mockCO.getN() >= 2);
+	}
+	
 	
 
 }
