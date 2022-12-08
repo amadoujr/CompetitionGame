@@ -173,7 +173,7 @@ public abstract class Competition {
 
 	public void notifyObserver(Competitor c1,Competitor c2) {
 		for (Observer o : this.observers) {
-			o.react_to_match( c1, c2);
+			o.reactToMatch( c1, c2);
 		}
 	}
 	

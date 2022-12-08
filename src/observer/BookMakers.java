@@ -5,8 +5,6 @@ import competitor.Competitor;
 
 public class BookMakers implements Observer {
 	
-	
-	
 	/**
 	 * contains odds of every competitor
 	 */
@@ -24,13 +22,8 @@ public class BookMakers implements Observer {
 		this.odds = new HashMap<>();
 		}
 
-	@Override
-	public void update(CompetitionObservable observable) {
-		
-	}
 	/** */
-	@Override
-	public void react_to_match(Competitor c1,Competitor c2) {
+	public void reactToMatch(Competitor c1,Competitor c2) {
 		this.odds.put(c1,c1.getOdd()-1);
 		c1.setOdd(c1.getOdd()-1);
 		this.odds.put(c2,c2.getOdd()+1);

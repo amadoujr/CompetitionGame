@@ -20,7 +20,7 @@ public class MockMatchObserver implements Observer {
 	}
 	
 	@Override
-	public void rectToMatch(Competitor c1, Competitor c2) {
+	public void reactToMatch(Competitor c1, Competitor c2) {
 		this.n = this.n+1 ;
 	}
 }

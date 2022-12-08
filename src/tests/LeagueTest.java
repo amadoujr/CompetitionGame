@@ -1,3 +1,5 @@
+package tests;
+
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -7,6 +9,8 @@ import competition.Competition;
 import competition.League;
 import competitor.Competitor;
 import match.Match;
+
+
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -19,7 +23,7 @@ class LeagueTest extends CompetitionTest {
 		List<Competitor> competitors = new ArrayList<Competitor>();
 		int i = 0;
 		for (i = 0 ; i < 4 ; i++) {
-			competitors.add(new Competitor("competitor "+i));    // Adding competitors to the competition
+			competitors.add(new Competitor("competitor "+i, i));    // Adding competitors to the competition
 		}
 		return new League(competitors, match);
 		
@@ -38,12 +42,18 @@ class LeagueTest extends CompetitionTest {
 
 	@Test
 	public void observersCompetitionTest() {
+		MockMatchObserver mockMO = new MockMatchObserver();
+		MockCompetitionObserver mockCO = new MockCompetitionObserver() ;
+		this.compet.addObservers(mockMO);
+		this.compet.addObservers(mockCO);
 		int total = 0;
 		this.compet.play();
 		for(Competitor c : this.compet.getCompetitors()) {
 			total = total + this.compet.ranking().get(c);
 		}
-		assertTrue(total ==this.mockMO.getN());
-		assertTrue(this.mockCO.getN() >= 2);
+		System.out.println("hereeeeeee "+ mockCO.getN());
+		System.out.println("hereeeeeee "+ mockMO.getN());
+		assertTrue(total ==mockCO.getN());
+		assertTrue(total ==mockMO.getN());
 	}
 }

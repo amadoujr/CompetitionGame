@@ -1,3 +1,5 @@
+package tests;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -7,6 +9,9 @@ import competition.NotRowofTwoException;
 import competition.Tournament;
 import competitor.Competitor;
 import match.Match;
+import observer.BookMakers;
+import observer.Canal;
+
 import java.util.*;
 
 class TournamentTest extends CompetitionTest {
@@ -18,7 +23,7 @@ class TournamentTest extends CompetitionTest {
 		List<Competitor> c = new ArrayList<Competitor>();
 		int i = 0;
 		for (i = 0 ; i < 4 ; i++) {
-			c.add(new Competitor("competitor "+i));    // Adding competitors to the competition
+			c.add(new Competitor("competitor "+i,i));    // Adding competitors to the competition
 		}
 		Match match = new MockMatch();
 		return new Tournament(c, match);
@@ -31,8 +36,8 @@ class TournamentTest extends CompetitionTest {
 	@Test 
 	public void playTournamentANDwinnerTournamentTestOK() { 
 		List<Competitor> competitors = new ArrayList<>();
-		Competitor c1 = new Competitor("madrid");  Competitor c2 = new Competitor("barcelone");
-		Competitor c3 = new Competitor("valence"); Competitor c4 = new Competitor("séville");
+		Competitor c1 = new Competitor("madrid", 0);  Competitor c2 = new Competitor("barcelone",1);
+		Competitor c3 = new Competitor("valence",2); Competitor c4 = new Competitor("séville",3);
 	    competitors.add(c1); competitors.add(c2); 
 	    competitors.add(c3); competitors.add(c4); 
 		Match m = new MockMatch();
@@ -43,9 +48,8 @@ class TournamentTest extends CompetitionTest {
 		} catch (NotRowofTwoException e) {
 			e.printStackTrace();
 		}
-	    
-	    assertTrue(this.tournament.getQualify().size() == 1);
-	    assertTrue(this.tournament.getScore().get(c1) == 2);
+	    assertFalse(this.tournament.getQualify().size() != 1);
+	    assertFalse(this.tournament.getScore().get(c1) != 2);
 	}
 	
 	/**
@@ -73,17 +77,23 @@ class TournamentTest extends CompetitionTest {
 		super.rankingTest();
 		Competitor c1 = compet.getCompetitors().get(0);
 		System.out.println(c1);
-		assertTrue(c1.getScoreP()==2);
+		assertFalse(c1.getScoreP()!=2);
 	}
 	  
 	@Test
 	public void observersCompetitionTest() {
+		MockMatchObserver mockMO = new MockMatchObserver();
+		MockCompetitionObserver mockCO = new MockCompetitionObserver() ;
+		this.compet.addObservers(mockMO);
+		this.compet.addObservers(mockCO);
 		int total = 0;
 		this.compet.play();
 		for(Competitor c : this.compet.getCompetitors()) {
 			total = total + this.compet.ranking().get(c);
 		}
-		assertTrue(total ==this.mockMO.getN());
-		assertTrue(this.mockCO.getN() >= 2);
+		System.out.println("hereeeeeee "+ mockCO.getN());
+		System.out.println("hereeeeeee "+ mockMO.getN());
+		assertFalse(total !=mockCO.getN());
+		assertFalse(total !=mockMO.getN());
 	}
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import selection.*;
 import competitor.Competitor;
 import match.Match;
-import observer.Canal;
 import observer.Observer;
 import partition.Partition;
 

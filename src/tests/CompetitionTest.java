@@ -1,3 +1,5 @@
+package tests;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Iterator;
@@ -6,18 +8,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import competition.Competition;
 import competitor.Competitor;
+import observer.BookMakers;
+import observer.Canal;
 
 public abstract class CompetitionTest {
 	
 	protected Competition compet;
-	protected Match mockMO ;
-	protected Match mockCO ;
+	protected MockMatchObserver mockMO ;
+	protected MockCompetitionObserver mockCO ;
+	protected Canal c1 ;
+	protected BookMakers b1;
 
 	@BeforeEach
 	void initialisation() {
 		this.compet = this.createCompet();
-		this.mockMO = new MockMatchObserver();
-		this.mockCO = new MockCompetitionObserver();
+	
 	}
 	
 	/**
@@ -30,7 +35,7 @@ public abstract class CompetitionTest {
 	/**
 	 *  testing methods playMatch of competition  
 	 */
-	@Testc
+	@Test
 	public void PlayMatchTestCompetition() {
 		
 		Set <Competitor> c = this.compet.getScore().keySet();
@@ -50,16 +55,7 @@ public abstract class CompetitionTest {
 			
 	}
 	
-	@Test
-	public void observersCompetitionTest() {
-		int total = 0;
-		this.compet.play();
-		for(Competitor c : this.compet.getCompetitors()) {
-			total = total + this.compet.ranking().get(c);
-		}
-		assertTrue(total ==this.mockMO.getN());
-		assertTrue(this.mockCO.getN() >= 2);
-	}
+
 	
 	
 
