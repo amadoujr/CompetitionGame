@@ -50,7 +50,7 @@ public abstract class CompetitionTest {
 	
 	@Test
 	public void rankingTest() {
-		System.out.println(this.compet);
+	
 		this.compet.play();
 			
 	}

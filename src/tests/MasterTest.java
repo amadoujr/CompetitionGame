@@ -33,8 +33,6 @@ class MasterTest extends CompetitionTest {
 		assertTrue(selection.compteur == 0);
 		this.compet.play();
 		assertTrue(selection.compteur == 1);
-		Competitor c1 = this.compet.getCompetitors().get(0);
-		assertTrue(c1.getScoreP() == 3);    // we cheated a bit because we must display the master to see
-											// really the score of every competitors but the result is good ...
+		
 	}
 }
